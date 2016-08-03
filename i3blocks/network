@@ -1,0 +1,24 @@
+#!/bin/sh
+
+text=''
+
+for INTERFACE in $(ls /sys/class/net/); do
+    state="$(cat /sys/class/net/$INTERFACE/operstate)"
+
+    if [ "$state" = "up" ]; then
+        ipaddr="$(ip addr show $INTERFACE | perl -n -e'/inet (.+)\// && print $1')"
+        ipaddr="${ipaddr:- -}"
+
+        text="$text |   $ipaddr"
+    fi
+done
+
+if [ -n "$text" ]; then
+    text=$(echo $text | sed "s/^| //")
+    echo $text
+    echo $text
+else
+    echo "-/->"
+    echo "none"
+    echo "#FF0000"
+fi

@@ -1,0 +1,55 @@
+#!/bin/sh
+
+INSTANCE="${1:-BAT0}"
+ALERT_LOW="${2:-10}"
+
+if test -e "/sys/class/power_supply/$INSTANCE"
+then
+    status=$(cat /sys/class/power_supply/$INSTANCE/status)
+    capacity=$(cat /sys/class/power_supply/$INSTANCE/capacity)
+
+    case "$status" in
+        "Discharging")
+            symbol=''
+            ;;
+        "Charging")
+            symbol=''
+            ;;
+        "Full")
+            exit
+            ;;
+    esac
+	if [ $capacity -gt 75 ]
+	then
+		baticon=''
+	else
+		if [ $capacity -gt 50 ]
+		then
+		baticon=''
+		else
+			if [ $capacity -gt 25 ]
+			then
+				baticon=''
+			else
+				if [ $capacity -gt 10 ]
+				then
+					baticon=''
+				else
+					baticon=''
+				fi
+			fi
+		fi
+	fi
+
+    # Full text
+	echo "$baticon $capacity% $(upower -i /org/freedesktop/UPower/devices/battery_BAT0 | grep -E "time" | cut -d ' ' -f 14-15) $symbol"
+
+    # Short text
+    echo "Ψ $capacity% $symbol"
+
+    # Color
+    if test $capacity -le $ALERT_LOW -a $status = "Discharging"
+    then
+        echo "#FF0000"
+    fi
+fi

@@ -141,7 +141,7 @@ bindsym Mod4+Shift+r restart
 bindsym Mod4+Shift+e exec "i3-nagbar -t warning -m 'You pressed the exit shortcut. Do you really want to exit i3? This will end your X session.' -b 'Yes, exit i3' 'i3-msg exit'"
 
 #Lockscreen settings
-exec --no-startup-id xautolock -time 10 -locker /home/patrik/.xlock/lock.sh -detectsleep
+exec --no-startup-id xautolock -time 10 -locker /home/patrik/.xlock/lock.sh 
 bindsym Mod4+O exec --no-startup-id /home/patrik/.xlock/lock.sh
 #exec --no-startup-id xss-lock /home/patrik/.xlock/lock.sh &
 
@@ -168,7 +168,7 @@ mode "resize" {
         bindsym Return mode "default"
         bindsym Escape mode "default"
 }
-set $status_bg     #191513CC
+set $status_bg     #22222200
 bindsym Mod4+r mode "resize"
 
 # Start i3bar to display a workspace bar (plus the system information i3status
@@ -181,13 +181,15 @@ bar {
   position top
   status_command i3blocks
   i3bar_command i3bar -t
-  height 18
-  tray_padding 3 
+  #i3bar_command ~/.i3/lemonbar/i3_lemonbar.sh
+  font pango:Hack, Awesome 9
+  height 20
+  tray_padding 0
   colors {
 	background $status_bg
 	focused_workspace #FFFFFF #000000 #FFFFFF
 	active_workspace #FFFFFF #000000 #FFFFFF
-	inactive_workspace #00000000 #000000 #00000000
+	inactive_workspace #888888 #000000 #888888
 	urgent_workspace #FFFFFF #000000 #FFFFFF
 	}
 }
@@ -241,6 +243,5 @@ bindsym XF86AudioPause exec --no-startup-id playerctl pause
 bindsym XF86AudioNext exec --no-startup-id playerctl next
 bindsym XF86AudioPrev exec --no-startup-id playerctl previous
 
-
-#Battery
-exec xfce4-power-manager &
+exec --no-startup-id nm-applet
+exec --no-startup-id blueman-applet
