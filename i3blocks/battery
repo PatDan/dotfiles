@@ -7,27 +7,28 @@ if test -e "/sys/class/power_supply/$INSTANCE"
 then
     status=$(cat /sys/class/power_supply/$INSTANCE/status)
     capacity=$(cat /sys/class/power_supply/$INSTANCE/capacity)
-
     case "$status" in
         "Discharging")
             symbol=''
+			remaining="$(upower -i /org/freedesktop/UPower/devices/battery_BAT0 | grep -E "time" | cut -d ' ' -f 14-15) "
             ;;
         "Charging")
             symbol=''
+			remaining="$(upower -i /org/freedesktop/UPower/devices/battery_BAT0 | grep -E "time" | cut -d ' ' -f 15-16) "
             ;;
         "Full")
             exit
             ;;
     esac
-	if [ $capacity -gt 75 ]
+	if [ $capacity -gt 89 ]
 	then
 		baticon=''
 	else
-		if [ $capacity -gt 50 ]
+		if [ $capacity -gt 62 ]
 		then
 		baticon=''
 		else
-			if [ $capacity -gt 25 ]
+			if [ $capacity -gt 35 ]
 			then
 				baticon=''
 			else
@@ -42,7 +43,7 @@ then
 	fi
 
     # Full text
-	echo "$baticon $capacity% $(upower -i /org/freedesktop/UPower/devices/battery_BAT0 | grep -E "time" | cut -d ' ' -f 14-15) $symbol"
+	echo "$baticon $capacity% $remaining$symbol"
 
     # Short text
     echo "Ψ $capacity% $symbol"

@@ -4,12 +4,15 @@ text=''
 
 for INTERFACE in $(ls /sys/class/net/); do
     state="$(cat /sys/class/net/$INTERFACE/operstate)"
-
     if [ "$state" = "up" ]; then
         ipaddr="$(ip addr show $INTERFACE | perl -n -e'/inet (.+)\// && print $1')"
         ipaddr="${ipaddr:- -}"
 
-        text="$text |   $ipaddr"
+		if [ "$INTERFACE" = "wlp4s0" ]; then
+			text=" $text |   $ipaddr"
+		else
+			text=" $text |  $ipaddr"
+		fi
     fi
 done
 

@@ -183,7 +183,7 @@ bar {
   i3bar_command i3bar -t
   #i3bar_command ~/.i3/lemonbar/i3_lemonbar.sh
   font pango:Hack, Awesome 9
-  height 20
+  height 21
   tray_padding 0
   colors {
 	background $status_bg
