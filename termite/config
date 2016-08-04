@@ -12,7 +12,7 @@ cursor          = #C7CCD1
 
 # 16 color space
 color0  = #1C2023
-color1  = #FFD8B1
+color1  = #69A5E5
 color2  = #79E0AD
 color3  = #AEC795
 color4  = #AE95C7
@@ -20,7 +20,7 @@ color5  = #EF96C2
 color6  = #BFDFFF
 color7  = #C7CCD1
 color8  = #747C84
-color9  = #FFD8B1
+color9  = #69A5E5
 color10 = #79E0AD
 color11 = #C7EFA0
 color12 = #F5A3A3

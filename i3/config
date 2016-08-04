@@ -141,7 +141,7 @@ bindsym Mod4+Shift+r restart
 bindsym Mod4+Shift+e exec "i3-nagbar -t warning -m 'You pressed the exit shortcut. Do you really want to exit i3? This will end your X session.' -b 'Yes, exit i3' 'i3-msg exit'"
 
 #Lockscreen settings
-exec --no-startup-id xautolock -time 10 -locker /home/patrik/.xlock/lock.sh 
+exec --no-startup-id xautolock -time 20 -locker /home/patrik/.xlock/lock.sh 
 bindsym Mod4+O exec --no-startup-id /home/patrik/.xlock/lock.sh
 #exec --no-startup-id xss-lock /home/patrik/.xlock/lock.sh &
 
