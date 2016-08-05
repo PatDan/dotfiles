@@ -10,11 +10,11 @@ then
     case "$status" in
         "Discharging")
             symbol=''
-			remaining="$(upower -i /org/freedesktop/UPower/devices/battery_BAT0 | grep -E "time" | cut -d ' ' -f 14-15) "
+			remaining="$(upower -i /org/freedesktop/UPower/devices/battery_BAT0 | grep -E "time" | cut -d ' ' -f 14-15)"
             ;;
         "Charging")
             symbol=''
-			remaining="$(upower -i /org/freedesktop/UPower/devices/battery_BAT0 | grep -E "time" | cut -d ' ' -f 15-16) "
+			remaining="$(upower -i /org/freedesktop/UPower/devices/battery_BAT0 | grep -E "time" | cut -d ' ' -f 15-16)"
             ;;
         "Full")
             exit
@@ -43,7 +43,7 @@ then
 	fi
 
     # Full text
-	echo "$baticon $capacity% $remaining$symbol"
+	echo "$symbol $baticon $capacity% $remaining"
 
     # Short text
     echo "Ψ $capacity% $symbol"

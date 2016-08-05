@@ -48,7 +48,7 @@ bindsym Mod4+d exec --no-startup-id dmenu_run
 # shipping a .desktop file. It is a wrapper around dmenu, so you need that
 # installed.
 # bindsym Mod1+d exec --no-startup-id i3-dmenu-desktop
-new_window pixel 3
+new_window pixel 2
 # change focus
 bindsym Mod4+$left focus left
 bindsym Mod4+$down focus down
@@ -141,7 +141,7 @@ bindsym Mod4+Shift+r restart
 bindsym Mod4+Shift+e exec "i3-nagbar -t warning -m 'You pressed the exit shortcut. Do you really want to exit i3? This will end your X session.' -b 'Yes, exit i3' 'i3-msg exit'"
 
 #Lockscreen settings
-exec --no-startup-id xautolock -time 20 -locker /home/patrik/.xlock/lock.sh 
+#exec --no-startup-id xautolock -time 20 -locker /home/patrik/.xlock/lock.sh 
 bindsym Mod4+O exec --no-startup-id /home/patrik/.xlock/lock.sh
 #exec --no-startup-id xss-lock /home/patrik/.xlock/lock.sh &
 
@@ -204,7 +204,7 @@ exec --no-startup-id xset fp+ $HOME/.local/share/fonts/tewi
 #for_window [class="^.*"] border pixel 0
 smart_gaps on
 smart_borders on
-gaps inner 8
+gaps inner 6
 gaps outer 0
 #######################################################################
 # automatically start i3-config-wizard to offer the user to create a
