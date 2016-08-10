@@ -53,4 +53,8 @@ then
     then
         echo "#FF0000"
     fi
+	if [ $status = "Charging" ]
+	then
+		echo "#00FF00"
+	fi
 fi
