@@ -11,21 +11,40 @@ foreground_bold = #C7CCD1
 cursor          = #C7CCD1
 
 # 16 color space
+
+# dark blue
 color0  = #1C2023
+# sky blue
 color1  = #69A5E5
-color2  = #79E0AD
-color3  = #AEC795
-color4  = #AE95C7
-color5  = #EF96C2
+# light forest green
+#color2  = #79E0AD
+color2  = #AEE0C7
+#pee yellow
+color3  = #F5F0C0
+color3  = #F5F3E2
+#light purple
+color4  = #F5A3A3
+#light pink
+color5  = #E4CEFF
+#ice blue
 color6  = #BFDFFF
+#grey ice blue
 color7  = #C7CCD1
+#blue grey
 color8  = #747C84
+#sky blue
 color9  = #69A5E5
-color10 = #79E0AD
-color11 = #C7EFA0
+#light forest green
+color10 = #AEE0C7
+#pee yellow
+color11 = #F5F3E2
+#peach
 color12 = #F5A3A3
+#light purple
 color13 = #E4CEFF
+#ice blue
 color14 = #BFDFFF
+#white
 color15 = #FFFFFF
  
 # 256 color space
@@ -35,3 +54,13 @@ color18 = #393F45
 color19 = #565E65
 color20 = #ADB3BA
 color21 = #DFE2E5
+
+#NORMAL
+color22 = #000000
+
+# Vim colors for syntax highlighting
+color81 = #69A5E5
+color121 = #AEE0C7
+#NORMAL
+color148 = #FFFFFF
+color224 = #F5A3A3
