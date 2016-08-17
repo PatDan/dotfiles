@@ -9,19 +9,19 @@ for INTERFACE in $(ls /sys/class/net/); do
         ipaddr="${ipaddr:- -}"
 
 		if [ "$INTERFACE" = "wlp4s0" ]; then
-			text=" $text |   $ipaddr"
+			text=" $text |    $ipaddr"
 		else
-			text=" $text |  $ipaddr"
+			text=" $text |   $ipaddr"
 		fi
     fi
 done
 
 if [ -n "$text" ]; then
     text=$(echo $text | sed "s/^| //")
-    echo $text
-    echo $text
+    echo ' '$text' '
+    echo ' '$text' '
 else
-    echo "-/->"
-    echo "none"
-    echo "#FF0000"
+    echo ' '"-/->"' '
+    echo ' '"none"' '
+    echo "#F5A3A3"
 fi

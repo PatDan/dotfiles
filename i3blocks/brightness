@@ -1,0 +1,3 @@
+#!/bin/sh
+
+echo ' ' "$(printf " %.0f" $(light))%"' '

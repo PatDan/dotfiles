@@ -1,30 +1,29 @@
 [options]
-font = Hack 11
+font = Terminess Powerline 12
 
 [colors]
 # Base16 Ashes
 # Scheme: Jannik Siebert (https://github.com/janniks)
 
-background = rgba(22, 22, 22, 0.85)
+background = rgba(22, 22, 22, 0.84)
 foreground      = #C7CCD1
 foreground_bold = #C7CCD1
 cursor          = #C7CCD1
 
 # 16 color space
 
-# dark blue
+#dark blue
 color0  = #1C2023
-# sky blue
+#royal blue
 color1  = #69A5E5
-# light forest green
-#color2  = #79E0AD
-color2  = #AEE0C7
-#pee yellow
-color3  = #F5F0C0
-color3  = #F5F3E2
-#light purple
-color4  = #F5A3A3
+#aquamarine
+color2  = #70CBB6
 #light pink
+#color3  = #ACBC6C
+color3  = #EAB9CD
+#expired peach
+color4  = #F5A3A3
+#light purple
 color5  = #E4CEFF
 #ice blue
 color6  = #BFDFFF
@@ -32,13 +31,13 @@ color6  = #BFDFFF
 color7  = #C7CCD1
 #blue grey
 color8  = #747C84
-#sky blue
+#royal blue
 color9  = #69A5E5
-#light forest green
-color10 = #AEE0C7
-#pee yellow
-color11 = #F5F3E2
-#peach
+#aquamarine
+color10  = #70CBB6
+#pink
+color11 = #EAB9CD
+#expired peach
 color12 = #F5A3A3
 #light purple
 color13 = #E4CEFF
@@ -55,12 +54,20 @@ color19 = #565E65
 color20 = #ADB3BA
 color21 = #DFE2E5
 
+#NONUSEDCOLORS
+#light forest green
+#color2  = #AEE0C7
+#light topaz
+#color3  = #F5F3E2
+#dirty gold
+#color3  = #D3C379
+
 #NORMAL
 color22 = #000000
 
 # Vim colors for syntax highlighting
-color81 = #69A5E5
 color121 = #AEE0C7
+color81 = #69A5E5
+#color148 = #FFFFFF
 #NORMAL
-color148 = #FFFFFF
 color224 = #F5A3A3

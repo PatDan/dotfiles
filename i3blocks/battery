@@ -43,18 +43,19 @@ then
 	fi
 
     # Full text
-	echo "$symbol $baticon $capacity% $remaining"
+	echo ' '"$symbol $baticon  $capacity% $remaining"' '
 
+	echo ' '"$symbol $baticon  $capacity% $remaining"' '
     # Short text
-    echo "Ψ $capacity% $symbol"
+    #echo "Ψ $capacity% $symbol"
 
     # Color
     if test $capacity -le $ALERT_LOW -a $status = "Discharging"
     then
-        echo "#FF0000"
+        echo "#F5A3A3"
     fi
 	if [ $status = "Charging" ]
 	then
-		echo "#00FF00"
+		echo "#70CBB6"
 	fi
 fi

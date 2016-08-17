@@ -24,4 +24,4 @@ then
 else
 	output="${array[0]}"
 fi
-echo $full
+echo ' '$output' '
