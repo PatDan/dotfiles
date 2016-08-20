@@ -22,11 +22,11 @@ color2  = #70CBB6
 #color3  = #ACBC6C
 color3  = #EAB9CD
 #expired peach
-color4  = #F5A3A3
+color6  = #F5A3A3
 #light purple
 color5  = #E4CEFF
 #ice blue
-color6  = #BFDFFF
+color4  = #BFDFFF
 #grey ice blue
 color7  = #C7CCD1
 #blue grey
@@ -38,11 +38,11 @@ color10  = #70CBB6
 #pink
 color11 = #EAB9CD
 #expired peach
-color12 = #F5A3A3
+color14 = #F5A3A3
 #light purple
 color13 = #E4CEFF
 #ice blue
-color14 = #BFDFFF
+color12 = #BFDFFF
 #white
 color15 = #FFFFFF
  
@@ -70,4 +70,4 @@ color121 = #AEE0C7
 color81 = #69A5E5
 #color148 = #FFFFFF
 #NORMAL
-color224 = #F5A3A3
+color224 = #BFDFFF
