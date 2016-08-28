@@ -63,11 +63,5 @@ color21 = #DFE2E5
 #color3  = #D3C379
 
 #NORMAL
-color22 = #000000
+#color22 = #000000
 
-# Vim colors for syntax highlighting
-#color121 = #AEE0C7
-#color81 = #69A5E5
-#color148 = #FFFFFF
-#NORMAL
-#color224 = #F5A3A3

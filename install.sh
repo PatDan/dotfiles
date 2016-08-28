@@ -1,7 +1,28 @@
 #!/bin/bash
-ln -s /home/$USER/.dotfiles/xlock /home/$USER/.xlock
-ln -s /home/$USER/.dotfiles/i3 /home/$USER/.i3
-ln -s /home/$USER/.dotfiles/i3blocks.conf /home/$USER/.i3blocks.conf
-ln -s /home/$USER/.dotfiles/termite /home/$USER/.config/termite
-ln -s /home/$USER/.dotfiles/tmux.conf /home/$USER/.tmux.conf
-ln -s /home/$USER/.dotfiles/i3blocks /home/$USER/.config/i3blocks
+if [ ! -e "$HOME/.i3" ]; then
+	ln -s $HOME/.dotfiles/i3 $HOME/.i3
+fi
+if [ ! -e "$HOME/.i3blocks.conf" ]; then
+	ln -s $HOME/.dotfiles/i3blocks.conf $HOME/.i3blocks.conf
+fi
+if [ ! -e "$HOME/.config/i3blocks" ]; then
+	ln -s $HOME/.dotfiles/i3blocks $HOME/.config/i3blocks
+fi
+if [ ! -e "$HOME/.config/termite" ]; then
+	ln -s $HOME/.dotfiles/termite $HOME/.config/termite
+fi
+if [ ! -e "$HOME/.tmux.conf" ]; then
+	ln -s $HOME/.dotfiles/tmux.conf $HOME/.tmux.conf
+fi
+if [ ! -e "$HOME/.vim" ]; then
+	ln -s $HOME/.dotfiles/vim $HOME/.vim &&
+	git clone https://github.com/klen/python-mode.git $HOME/.vim/bundle/python-mode &&
+	git clone https://github.com/scrooloose/nerdtree.git $HOME/.vim/bundle/nerdtree &&
+	git clone https://github.com/jistr/vim-nerdtree-tabs.git $HOME/.vim/bundle/vim-nerdtree-tabs &&
+	git clone https://github.com/vim-scripts/indentpython.vim.git $HOME/.vim/bundle/indentpython.vim &&
+	git clone https://github.com/ctrlpvim/ctrlp.vim.git $HOME/.vim/bundle/ctrlp.vim &&
+	git clone https://github.com/tpope/vim-sensible.git $HOME/.vim/bundle/vim-sensible
+fi
+if [ ! -e "$HOME/.vimrc" ]; then
+	ln -s $HOME/.dotfiles/vim/vimrc $HOME/.vimrc
+fi
