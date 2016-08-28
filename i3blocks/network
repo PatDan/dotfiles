@@ -7,11 +7,12 @@ for INTERFACE in $(ls /sys/class/net/); do
     if [ "$state" = "up" ]; then
         ipaddr="$(ip addr show $INTERFACE | perl -n -e'/inet (.+)\// && print $1')"
         ipaddr="${ipaddr:- -}"
+		iwid="$(iwgetid -r)"
 
 		if [ "$INTERFACE" = "wlp4s0" ]; then
-			text=" $text |    $ipaddr"
+			text=" $text |    $iwid    $ipaddr"
 		else
-			text=" $text |   $ipaddr"
+			text=" $text |   wired    $ipaddr"
 		fi
     fi
 done

@@ -33,7 +33,7 @@ set $right l
 
 
 # class                 border  backgr. text    indicator
-client.focused          #404040 #282828 #ffffff #69A5E5
+client.focused          #404040 #282828 #ffffff #999999
 client.focused_inactive #404040 #282828 #ffffff #484e50
 client.unfocused        #404040 #282828 #888888 #292d2e
 client.urgent           #404040 #282828 #ffffff #900000
@@ -119,7 +119,7 @@ set $mod Mod4
 set $ws1  1:_
 set $ws2  2: 
 set $ws3  3: 
-set $ws4  4: 
+set $ws4  4: 
 set $ws5  5: 
 set $ws6  6: 
 set $ws7  7: 
@@ -204,6 +204,7 @@ bar {
   font pango:Hack, Awesome 8
   height 20
   tray_padding 0
+  tray_output 0
   colors {
     separator            #666666
     statusline           #dddddd
@@ -266,6 +267,6 @@ exec --no-startup-id nm-applet
 exec --no-startup-id blueman-applet
 exec --no-startup-id /etc/profile.d/vte.sh
 
-exec --no-startup-id i3-msg 'workspace $ws1; exec termite; exec termite; workspace $ws1'
-exec --no-startup-id i3-msg 'workspace $ws2; exec chromium; workspace $ws1'
+exec --no-startup-id i3-msg 'workspace $ws1; exec termite; exec termite'
 exec --no-startup-id i3-msg 'workspace $ws3; exec thunar; workspace $ws1'
+exec --no-startup-id $HOME/.i3/custom_dmenu_run.sh

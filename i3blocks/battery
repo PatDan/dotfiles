@@ -43,9 +43,9 @@ then
 	fi
 
     # Full text
-	echo ' '"$symbol $baticon  $capacity% $remaining"' '
+	echo ' '" $baticon  $capacity% $remaining"' '
 
-	echo ' '"$symbol $baticon  $capacity% $remaining"' '
+	echo ' '" $baticon  $capacity% $remaining"' '
     # Short text
     #echo "Ψ $capacity% $symbol"
 
