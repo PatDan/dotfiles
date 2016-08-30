@@ -16,7 +16,7 @@ compinit
 zstyle ':completion:*' menu select
 setopt completeinword
 zstyle ':completion:*' matcher-list 'm:{a-zA-Z}={A-Za-z}'
-zstyle ':completion:*' list-colors "${(@s.:.)LS_COLORS}"
+#zstyle ':completion:*' list-colors "${(@s.:.)LS_COLORS}"
 
 # Colors and prompt
 autoload -Uz colors && colors

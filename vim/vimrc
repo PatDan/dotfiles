@@ -70,7 +70,7 @@ nnoremap <Leader>e :silent !clear<cr> <bar> :!./%<<cr>
 nnoremap <Leader>C :!./%<<cr>
 
 " Visible line for line length
-set colorcolumn=80
+set colorcolumn=81
 highlight ColorColumn ctermbg=234
 
 " Autoclose function documentation in autocomplete
@@ -82,14 +82,12 @@ set background=dark
 " Color settings
 highlight linenr ctermfg=244
 highlight CursorLineNr ctermfg=244
-highlight CursorLineNr ctermbg=233
 highlight NonText ctermfg=234
-highlight linenr ctermbg=233
 highlight PreProc ctermfg=1
 highlight Special ctermfg=4
 highlight Type ctermfg=2
-highlight VertSplit ctermfg=237
-highlight VertSplit ctermbg=237
+highlight VertSplit ctermfg=238
+highlight VertSplit ctermbg=238
 highlight StatusLineNC ctermfg=240
 highlight Directory ctermfg=6
 highlight Title ctermfg=15
