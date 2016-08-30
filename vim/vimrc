@@ -79,12 +79,20 @@ autocmd InsertLeave * if pumvisible() == 0|pclose|endif
 
 set background=dark
 
-" Linenr settings
+" Color settings
 highlight linenr ctermfg=244
 highlight CursorLineNr ctermfg=244
+highlight CursorLineNr ctermbg=234
+highlight NonText ctermfg=234
+highlight linenr ctermbg=234
 highlight PreProc ctermfg=1
 highlight Special ctermfg=4
 highlight Type ctermfg=2
+highlight VertSplit ctermfg=237
+highlight VertSplit ctermbg=237
+highlight StatusLineNC ctermfg=240
+highlight Directory ctermfg=6
+highlight Title ctermfg=15
 set relativenumber
 
 "Nerdtree settings

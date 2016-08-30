@@ -26,3 +26,12 @@ fi
 if [ ! -e "$HOME/.vimrc" ]; then
 	ln -s $HOME/.dotfiles/vim/vimrc $HOME/.vimrc
 fi
+if [ ! -e "$HOME/.xlock" ]; then
+	ln -s $HOME/.dotfiles/xlock $HOME/.xlock
+fi
+if [ ! -e "$HOME/.zshrc" ]; then
+	ln -s $HOME/.dotfiles/zshrc $HOME/.zshrc
+fi
+if [ ! -e "$HOME/.config/powerline" ]; then
+	ln -s $HOME/.dotfiles/powerline $HOME/.config/powerline
+fi

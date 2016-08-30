@@ -53,7 +53,6 @@ bindsym Mod4+d exec --no-startup-id custom_dmenu_run -fn 'Hack'-10 -h 20 -sb '#6
 # shipping a .desktop file. It is a wrapper around dmenu, so you need that
 # installed.
 # bindsym Mod1+d exec --no-startup-id i3-dmenu-desktop
-new_window pixel 2
 # change focus
 bindsym Mod4+$left focus left
 bindsym Mod4+$down focus down
@@ -187,7 +186,7 @@ mode "resize" {
         bindsym Return mode "default"
         bindsym Escape mode "default"
 }
-set $status_bg     #12141800
+set $status_bg     #28282800
 bindsym Mod4+r mode "resize"
 
 # Start i3bar to display a workspace bar (plus the system information i3status
@@ -221,10 +220,15 @@ bar {
 # }
 
 #for_window [class="^.*"] border pixel 0
+#
+
+#Gaps
 smart_gaps on
 smart_borders on
 gaps inner 10
 gaps outer 0
+new_window pixel 2
+
 #######################################################################
 # automatically start i3-config-wizard to offer the user to create a
 # keysym-based config which used their favorite modifier (alt or windows)

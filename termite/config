@@ -17,7 +17,8 @@ color0  = #1C2023
 #royal blue
 color1  = #69A5E5
 #aquamarine
-color2  = #70CBB6
+#color2  = #70CBB6
+color2  = #8FD3C3
 #light pink
 #color3  = #ACBC6C
 color3  = #EAB9CD
@@ -34,7 +35,7 @@ color8  = #747C84
 #royal blue
 color9  = #69A5E5
 #aquamarine
-color10  = #70CBB6
+color2  = #8FD3C3
 #pink
 color11 = #EAB9CD
 #expired peach
