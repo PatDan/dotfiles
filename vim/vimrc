@@ -82,9 +82,9 @@ set background=dark
 " Color settings
 highlight linenr ctermfg=244
 highlight CursorLineNr ctermfg=244
-highlight CursorLineNr ctermbg=234
+highlight CursorLineNr ctermbg=233
 highlight NonText ctermfg=234
-highlight linenr ctermbg=234
+highlight linenr ctermbg=233
 highlight PreProc ctermfg=1
 highlight Special ctermfg=4
 highlight Type ctermfg=2
