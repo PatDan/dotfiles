@@ -1,17 +1,21 @@
 # Path to your oh-my-zsh installation.
-autoload -Uz vcs_info
-precmd_vcs_info() { vcs_info }
-precmd_functions+=( precmd_vcs_info )
-setopt prompt_subst
-GIT=\$vcs_info_msg_0_
-# PROMPT=\$vcs_info_msg_0_'%# '
-zstyle ':vcs_info:git:*' formats ' (%b)'
+
+
+# GIT
+#autoload -Uz vcs_info
+#precmd_vcs_info() { vcs_info }
+#precmd_functions+=( precmd_vcs_info )
+#setopt prompt_subst
+#GIT=\$vcs_info_msg_0_
+ #PROMPT=\$vcs_info_msg_0_'%# '
+#zstyle ':vcs_info:git:*' formats ' (%b)'
+
 autoload -Uz compinit
 compinit
 zstyle ':completion:*' menu select
 autoload -Uz colors && colors
 PROMPT="%{$fg[green]%}%n%{$reset_color%}@%{$fg[purple]%}%m %{$fg_no_bold[red]%}%1~%{$fg[cyan]%}$GIT %{$reset_color%}%# "
-setopt menu_complete
+#setopt menu_complete
 autoload -Uz promptinit
 promptinit
 setopt completeinword
@@ -104,3 +108,47 @@ export EDITOR=vim
 # alias ohmyzsh="mate ~/.oh-my-zsh"
 #LS_COLORS=$LS_COLORS:'di=1;36:' ; export LS_COLORS 
 zstyle ':completion:*' list-colors "${(@s.:.)LS_COLORS}"
+#setopt share_history
+#setopt append_history
+setopt APPEND_HISTORY
+SAVEHIST=100
+HISTFILE=~/.cache/zsh_history
+
+setopt prompt_subst
+autoload colors zsh/terminfo
+colors
+
+function __git_prompt {
+  local DIRTY="%{$fg[yellow]%}"
+  local CLEAN="%{$fg[green]%}"
+  local UNMERGED="%{$fg[red]%}"
+  local RESET="%{$terminfo[sgr0]%}"
+  git rev-parse --git-dir >& /dev/null
+  if [[ $? == 0 ]]
+  then
+    echo -n "["
+    if [[ `git ls-files -u >& /dev/null` == '' ]]
+    then
+      git diff --quiet >& /dev/null
+      if [[ $? == 1 ]]
+      then
+        echo -n $DIRTY
+      else
+        git diff --cached --quiet >& /dev/null
+        if [[ $? == 1 ]]
+        then
+          echo -n $DIRTY
+        else
+          echo -n $CLEAN
+        fi
+      fi
+    else
+      echo -n $UNMERGED
+    fi
+    echo -n `git branch | grep '* ' | sed 's/..//'`
+    echo -n $RESET
+    echo -n "]"
+  fi
+}
+
+export RPS1='$(__git_prompt)'

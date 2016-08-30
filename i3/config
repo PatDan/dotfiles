@@ -33,10 +33,10 @@ set $right l
 
 
 # class                 border  backgr. text    indicator
-client.focused          #404040 #282828 #ffffff #999999
-client.focused_inactive #404040 #282828 #ffffff #484e50
-client.unfocused        #404040 #282828 #888888 #292d2e
-client.urgent           #404040 #282828 #ffffff #900000
+client.focused          #404040 #606060 #ffffff #999999
+client.focused_inactive #404040 #606060 #ffffff #484e50
+client.unfocused        #404040 #606060 #888888 #292d2e
+client.urgent           #404040 #606060 #ffffff #900000
 # use Mouse+Mod1 to drag floating windows to their wanted position
 floating_modifier Mod4
 
@@ -208,9 +208,9 @@ bar {
     separator            #666666
     statusline           #dddddd
 	background $status_bg
-	focused_workspace #404040 #282828 #FFFFFF
-	active_workspace #404040 #282828 #FFFFFF
-	inactive_workspace #404040 #282828 #999999
+	focused_workspace #606060 #161616 #FFFFFF
+	active_workspace #606060 #161616 #FFFFFF
+	inactive_workspace #606060 #161616 #999999
 	urgent_workspace #000000 #000000 #999999
 	binding_mode       #2f343a #900000 #ffffff
 	}
@@ -227,7 +227,7 @@ smart_gaps on
 smart_borders on
 gaps inner 10
 gaps outer 0
-new_window pixel 2
+new_window pixel 1
 
 #######################################################################
 # automatically start i3-config-wizard to offer the user to create a

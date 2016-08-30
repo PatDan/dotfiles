@@ -5,7 +5,7 @@ font = Terminess Powerline 12
 # Base16 Ashes
 # Scheme: Jannik Siebert (https://github.com/janniks)
 
-background = rgba(22, 22, 22, 0.90)
+background = rgba(22, 22, 22, 0.9)
 foreground      = #C7CCD1
 foreground_bold = #C7CCD1
 cursor          = #C7CCD1
@@ -35,7 +35,7 @@ color8  = #747C84
 #royal blue
 color9  = #69A5E5
 #aquamarine
-color2  = #8FD3C3
+color10  = #8FD3C3
 #pink
 color11 = #EAB9CD
 #expired peach
