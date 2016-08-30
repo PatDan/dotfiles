@@ -14,7 +14,6 @@ autoload -Uz compinit
 compinit
 zstyle ':completion:*' menu select
 autoload -Uz colors && colors
-PROMPT="%{$fg[green]%}%n%{$reset_color%}@%{$fg[purple]%}%m %{$fg_no_bold[red]%}%1~%{$fg[cyan]%}$GIT %{$reset_color%}%# "
 #setopt menu_complete
 autoload -Uz promptinit
 promptinit
@@ -126,20 +125,20 @@ function __git_prompt {
   git rev-parse --git-dir >& /dev/null
   if [[ $? == 0 ]]
   then
-    echo -n "["
+    echo -n ""
     if [[ `git ls-files -u >& /dev/null` == '' ]]
     then
       git diff --quiet >& /dev/null
       if [[ $? == 1 ]]
       then
-        echo -n $DIRTY
+        echo -n " ("$DIRTY
       else
         git diff --cached --quiet >& /dev/null
         if [[ $? == 1 ]]
         then
-          echo -n $DIRTY
+          echo -n " ("$DIRTY
         else
-          echo -n $CLEAN
+          echo -n " ("$CLEAN
         fi
       fi
     else
@@ -147,8 +146,9 @@ function __git_prompt {
     fi
     echo -n `git branch | grep '* ' | sed 's/..//'`
     echo -n $RESET
-    echo -n "]"
+	echo -n ")"
   fi
 }
 
 export RPS1='$(__git_prompt)'
+PROMPT="%{$fg[green]%}%n%{$reset_color%}@%{$fg[purple]%}%m %{$fg_no_bold[red]%}%1~ %{$reset_color%}%# "
