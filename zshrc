@@ -10,23 +10,77 @@
  #PROMPT=\$vcs_info_msg_0_'%# '
 #zstyle ':vcs_info:git:*' formats ' (%b)'
 
+# Completion
 autoload -Uz compinit
 compinit
 zstyle ':completion:*' menu select
-autoload -Uz colors && colors
-#setopt menu_complete
-autoload -Uz promptinit
-promptinit
 setopt completeinword
 zstyle ':completion:*' matcher-list 'm:{a-zA-Z}={A-Za-z}'
+zstyle ':completion:*' list-colors "${(@s.:.)LS_COLORS}"
 
+# Colors and prompt
+autoload -Uz colors && colors
+autoload -Uz promptinit
+promptinit
 if [[ -x "`whence -p dircolors`" ]]; then
   eval `dircolors`
   alias ls='ls --color=auto'
 else
   alias ls='ls -F'
 fi
+
+# Editor
 export EDITOR=vim
+
+# History
+setopt APPEND_HISTORY
+SAVEHIST=100
+HISTFILE=~/.cache/zsh_history
+
+# Git prompt
+setopt prompt_subst
+autoload colors zsh/terminfo
+colors
+function __git_prompt {
+  local DIRTY="%{$fg[yellow]%}"
+  local CLEAN="%{$fg[green]%}"
+  local UNMERGED="%{$fg[red]%}"
+  local RESET="%{$terminfo[sgr0]%}"
+  git rev-parse --git-dir >& /dev/null
+  if [[ $? == 0 ]]
+  then
+    echo -n ""
+    if [[ `git ls-files -u >& /dev/null` == '' ]]
+    then
+      git diff --quiet >& /dev/null
+      if [[ $? == 1 ]]
+      then
+        echo -n $DIRTY" ✗ ["
+      else
+        git diff --cached --quiet >& /dev/null
+        if [[ $? == 1 ]]
+        then
+          echo -n $DIRTY" ✗ ["
+        else
+          echo -n $CLEAN" ["
+        fi
+      fi
+    else
+      echo -n $UNMERGED
+    fi
+    echo -n `git branch | grep '* ' | sed 's/..//'`
+    echo -n $RESET
+	echo -n "]"
+  fi
+}
+
+#export RPS1='$(__git_prompt)'
+GIT='$(__git_prompt)'
+PROMPT="%{$fg_bold[cyan]%}%n%{$reset_color%}@%{$fg[purple]%}%m %{$fg_no_bold[red]%}%1~$GIT %{$reset_color%}%# "
+
+
+
+
 # Set name of the theme to load.
 # Look in ~/.oh-my-zsh/themes/
 # Optionally, if you set this to "random", it'll load a random theme each
@@ -106,50 +160,3 @@ export EDITOR=vim
 # alias zshconfig="mate ~/.zshrc"
 # alias ohmyzsh="mate ~/.oh-my-zsh"
 #LS_COLORS=$LS_COLORS:'di=1;36:' ; export LS_COLORS 
-zstyle ':completion:*' list-colors "${(@s.:.)LS_COLORS}"
-#setopt share_history
-#setopt append_history
-setopt APPEND_HISTORY
-SAVEHIST=100
-HISTFILE=~/.cache/zsh_history
-
-setopt prompt_subst
-autoload colors zsh/terminfo
-colors
-
-function __git_prompt {
-  local DIRTY="%{$fg[yellow]%}"
-  local CLEAN="%{$fg[green]%}"
-  local UNMERGED="%{$fg[red]%}"
-  local RESET="%{$terminfo[sgr0]%}"
-  git rev-parse --git-dir >& /dev/null
-  if [[ $? == 0 ]]
-  then
-    echo -n ""
-    if [[ `git ls-files -u >& /dev/null` == '' ]]
-    then
-      git diff --quiet >& /dev/null
-      if [[ $? == 1 ]]
-      then
-        echo -n $DIRTY" ✗ ["
-      else
-        git diff --cached --quiet >& /dev/null
-        if [[ $? == 1 ]]
-        then
-          echo -n $DIRTY" ✗ ["
-        else
-          echo -n $CLEAN" ["
-        fi
-      fi
-    else
-      echo -n $UNMERGED
-    fi
-    echo -n `git branch | grep '* ' | sed 's/..//'`
-    echo -n $RESET
-	echo -n "]"
-  fi
-}
-
-#export RPS1='$(__git_prompt)'
-GIT='$(__git_prompt)'
-PROMPT="%{$fg[green]%}%n%{$reset_color%}@%{$fg[purple]%}%m %{$fg_no_bold[red]%}%1~$GIT %{$reset_color%}%# "
