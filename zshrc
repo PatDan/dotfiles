@@ -131,14 +131,14 @@ function __git_prompt {
       git diff --quiet >& /dev/null
       if [[ $? == 1 ]]
       then
-        echo -n " ("$DIRTY
+        echo -n "✗ ("$DIRTY
       else
         git diff --cached --quiet >& /dev/null
         if [[ $? == 1 ]]
         then
-          echo -n " ("$DIRTY
+          echo -n "✗ ("$DIRTY
         else
-          echo -n " ("$CLEAN
+          echo -n " ("$CLEAN
         fi
       fi
     else
