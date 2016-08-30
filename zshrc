@@ -131,14 +131,14 @@ function __git_prompt {
       git diff --quiet >& /dev/null
       if [[ $? == 1 ]]
       then
-        echo -n "✗ ("$DIRTY
+        echo -n $DIRTY" ✗ ["
       else
         git diff --cached --quiet >& /dev/null
         if [[ $? == 1 ]]
         then
-          echo -n "✗ ("$DIRTY
+          echo -n $DIRTY" ✗ ["
         else
-          echo -n " ("$CLEAN
+          echo -n $CLEAN" ["
         fi
       fi
     else
@@ -146,9 +146,10 @@ function __git_prompt {
     fi
     echo -n `git branch | grep '* ' | sed 's/..//'`
     echo -n $RESET
-	echo -n ")"
+	echo -n "]"
   fi
 }
 
-export RPS1='$(__git_prompt)'
-PROMPT="%{$fg[green]%}%n%{$reset_color%}@%{$fg[purple]%}%m %{$fg_no_bold[red]%}%1~ %{$reset_color%}%# "
+#export RPS1='$(__git_prompt)'
+GIT='$(__git_prompt)'
+PROMPT="%{$fg[green]%}%n%{$reset_color%}@%{$fg[purple]%}%m %{$fg_no_bold[red]%}%1~$GIT %{$reset_color%}%# "
