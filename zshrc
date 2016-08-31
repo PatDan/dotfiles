@@ -16,7 +16,6 @@ compinit
 zstyle ':completion:*' menu select
 setopt completeinword
 zstyle ':completion:*' matcher-list 'm:{a-zA-Z}={A-Za-z}'
-#zstyle ':completion:*' list-colors "${(@s.:.)LS_COLORS}"
 
 # Colors and prompt
 autoload -Uz colors && colors
@@ -35,7 +34,7 @@ export EDITOR=vim
 # History
 setopt APPEND_HISTORY
 SAVEHIST=100
-HISTFILE=$HOME/.cache/zsh_history
+HISTFILE=~/.cache/zsh_history
 
 # Git prompt
 setopt prompt_subst
@@ -78,6 +77,7 @@ function __git_prompt {
 GIT='$(__git_prompt)'
 PROMPT="%{$fg_bold[cyan]%}%n%{$reset_color%}@%{$fg[purple]%}%m %{$fg_no_bold[red]%}%1~$GIT %{$reset_color%}%# "
 
+zstyle ':completion:*' list-colors "${(@s.:.)LS_COLORS}"
 
 
 
