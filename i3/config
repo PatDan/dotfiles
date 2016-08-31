@@ -208,9 +208,9 @@ bar {
     separator            #666666
     statusline           #dddddd
 	background $status_bg
-	focused_workspace #606060 #161616 #FFFFFF
-	active_workspace #606060 #161616 #FFFFFF
-	inactive_workspace #606060 #161616 #999999
+	focused_workspace #606060 #161616D6 #FFFFFF
+	active_workspace #606060 #161616D6 #FFFFFF
+	inactive_workspace #606060 #161616D6 #999999
 	urgent_workspace #000000 #000000 #999999
 	binding_mode       #2f343a #900000 #ffffff
 	}

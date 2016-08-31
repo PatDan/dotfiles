@@ -35,7 +35,7 @@ export EDITOR=vim
 # History
 setopt APPEND_HISTORY
 SAVEHIST=100
-HISTFILE=~/.cache/zsh_history
+HISTFILE=$HOME/.cache/zsh_history
 
 # Git prompt
 setopt prompt_subst
