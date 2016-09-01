@@ -1,7 +1,5 @@
 exec --no-startup-id xset fp+ $HOME/.local/share/fonts/ohsnap
 exec --no-startup-id xset fp+ $HOME/.local/share/fonts/misc
-exec --no-startup-id xset fp+ $HOME/.local/share/fonts/terminesspowerline
-exec --no-startup-id xset fp+ $HOME/.local/share/fonts/tewi
 # i3 config file (v4)
 #
 # Please see http://i3wm.org/docs/userguide.html for a complete reference!
