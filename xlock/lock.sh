@@ -1,4 +1,3 @@
-
 #!/bin/bash
 TMPBG=/tmp/screen.png
 AVGPX=/tmp/average.txt

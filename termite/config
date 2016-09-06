@@ -1,14 +1,16 @@
 [options]
-font = Terminess Powerline 12
+font =  Droid Sans Mono Dotted for Powerline 11
 
 [colors]
 # Base16 Ashes
 # Scheme: Jannik Siebert (https://github.com/janniks)
 
-background = rgba(22, 22, 22, 0.9)
-foreground      = #C7CCD1
-foreground_bold = #C7CCD1
-cursor          = #C7CCD1
+#background = rgba(45, 48, 53, 0.95)
+background = rgba(37, 44, 52, 0.95)
+#foreground      = #C7CCD1
+foreground      = #DDDDDD
+foreground_bold = #DDDDDD
+cursor          = #DDDDDD
 
 # 16 color space
 
@@ -54,6 +56,8 @@ color18 = #393F45
 color19 = #565E65
 color20 = #ADB3BA
 color21 = #DFE2E5
+
+color22 = #252C34
 
 #NONUSEDCOLORS
 #light forest green

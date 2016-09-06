@@ -25,6 +25,7 @@ while c <= 'z'
   exec "set <A-".c.">=\e".c
   exec "imap \e".c." <A-".c.">"
   let c = nr2char(1+char2nr(c))
+  0
 endw
 
 set timeout ttimeoutlen=50
@@ -71,7 +72,7 @@ nnoremap <Leader>C :!./%<<cr>
 
 " Visible line for line length
 set colorcolumn=81
-highlight ColorColumn ctermbg=234
+highlight ColorColumn ctermbg=22
 
 " Autoclose function documentation in autocomplete
 autocmd CursorMovedI * if pumvisible() == 0|pclose|endif
@@ -116,9 +117,9 @@ au BufNewFile,BufRead *.py set autoindent
 au BufNewFile,BufRead *.py set fileformat=unix	
 
 "C settings
-au BufNewFile,BufRead *.c set tabstop=4
-au BufNewFile,BufRead *.c set softtabstop=4
-au BufNewFile,BufRead *.c set shiftwidth=4
+au BufNewFile,BufRead *.c set tabstop=8
+au BufNewFile,BufRead *.c set softtabstop=8
+au BufNewFile,BufRead *.c set shiftwidth=8
 au BufNewFile,BufRead *.c set noexpandtab
 
 "Haskell settings
@@ -130,3 +131,5 @@ au BufNewFile,BufRead *.hs set shiftround                  "Round indent to near
 " let g:ghc="/usr/bin/ghc-6.6.1"
 " au BufEnter *.hs compiler ghc
 " let g:haddock_browser="/usr/bin/firefox"
+"
+let g:Powerline_symbols = 'fancy'
