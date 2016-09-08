@@ -43,7 +43,7 @@ map <Leader>x :x!<CR>
 map <Leader>q :q!<CR>
 
 " Copy paste
-set clipboard=unnamed
+" set clipboard=unnamed
 vmap <C-c> "+y
 vmap <C-x> "+c
 vmap <C-v> c<ESC>"+p
