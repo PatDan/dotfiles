@@ -14,15 +14,15 @@ fi
 if [ ! -e "$HOME/.tmux.conf" ]; then
 	ln -s $HOME/.dotfiles/tmux.conf $HOME/.tmux.conf
 fi
-#if [ ! -e "$HOME/.vim" ]; then
-	#ln -s $HOME/.dotfiles/vim $HOME/.vim &&
+if [ ! -e "$HOME/.vim" ]; then
+	ln -s $HOME/.dotfiles/vim $HOME/.vim &&
 	git clone https://github.com/klen/python-mode.git $HOME/.vim/bundle/python-mode &&
 	git clone https://github.com/scrooloose/nerdtree.git $HOME/.vim/bundle/nerdtree &&
 	git clone https://github.com/jistr/vim-nerdtree-tabs.git $HOME/.vim/bundle/vim-nerdtree-tabs &&
 	git clone https://github.com/vim-scripts/indentpython.vim.git $HOME/.vim/bundle/indentpython.vim &&
 	git clone https://github.com/ctrlpvim/ctrlp.vim.git $HOME/.vim/bundle/ctrlp.vim &&
 	git clone https://github.com/tpope/vim-sensible.git $HOME/.vim/bundle/vim-sensible
-#fi
+fi
 if [ ! -e "$HOME/.vimrc" ]; then
 	ln -s $HOME/.dotfiles/vim/vimrc $HOME/.vimrc
 fi
@@ -34,4 +34,10 @@ if [ ! -e "$HOME/.zshrc" ]; then
 fi
 if [ ! -e "$HOME/.config/powerline" ]; then
 	ln -s $HOME/.dotfiles/powerline $HOME/.config/powerline
+fi
+if [ ! -e "$HOME/.gtkrc-2.0" ]; then
+	ln -s $HOME/.dotfiles/gtk/gtkrc-2.0 $HOME/.gtkrc-2.0
+fi
+if [ ! -e "$HOME/.config/gtk-3.0" ]; then
+	ln -s $HOME/.dotfiles/gtk/gtk-3.0 $HOME/.config/gtk-3.0
 fi

@@ -1,0 +1,5 @@
+#!/bin/sh
+case $BLOCK_BUTTON in
+	1) /home/patrik/.xlock/lock.sh ;; 
+esac
+echo '  Lock '

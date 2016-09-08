@@ -23,7 +23,7 @@ autoload -Uz promptinit
 promptinit
 if [[ -x "`whence -p dircolors`" ]]; then
   eval `dircolors`
-  alias ls='ls --color=auto'
+  alias ls='ls --color=tty'
 else
   alias ls='ls -F'
 fi
