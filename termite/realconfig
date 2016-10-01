@@ -6,7 +6,7 @@ font =  Droid Sans Mono Dotted for Powerline 11
 # Scheme: Jannik Siebert (https://github.com/janniks)
 
 #background = rgba(45, 48, 53, 0.95)
-background = rgba(39, 44, 51, 0.95)
+background = rgba(37, 44, 52, 0.95)
 #foreground      = #C7CCD1
 foreground      = #DDDDDD
 foreground_bold = #DDDDDD
@@ -16,32 +16,34 @@ cursor          = #DDDDDD
 
 #dark blue
 color0  = #1C2023
-#expired peach
-color1  = #FFA9D4
+#royal blue
+color1  = #69A5E5
 #aquamarine
+#color2  = #70CBB6
 color2  = #8FD3C3
 #light pink
-color3  = #FF6896
-#royal blue
-color4  = #69A5E5
+#color3  = #ACBC6C
+color3  = #EAB9CD
+#expired peach
+color4  = #F5A3A3
 #light purple
-color5  = #CA8FEB
+color5  = #E4CEFF
 #ice blue
 color6  = #BFDFFF
 #grey ice blue
 color7  = #C7CCD1
 #blue grey
 color8  = #747C84
-#expired peach
-color9  = #FFA9D4
+#royal blue
+color9  = #69A5E5
 #aquamarine
 color10  = #8FD3C3
-#light pink
-color11 = #FF6896
-#royal blue
-color12  = #69A5E5
+#pink
+color11 = #EAB9CD
+#expired peach
+color12 = #F5A3A3
 #light purple
-color13 = #CA8FEB
+color13 = #E4CEFF
 #ice blue
 color14 = #BFDFFF
 #white
@@ -67,4 +69,3 @@ color22 = #252C34
 
 #NORMAL
 #color22 = #000000
-

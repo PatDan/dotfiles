@@ -81,7 +81,6 @@ nnoremap <Leader>C :!./%<<cr>
 
 " Visible line for line length
 set colorcolumn=81
-highlight ColorColumn ctermbg=22
 
 " Autoclose function documentation in autocomplete
 autocmd CursorMovedI * if pumvisible() == 0|pclose|endif
@@ -90,6 +89,7 @@ autocmd InsertLeave * if pumvisible() == 0|pclose|endif
 set background=dark
 
 " Color settings
+highlight ColorColumn ctermbg=22
 highlight linenr ctermfg=244
 highlight CursorLineNr ctermfg=244
 highlight NonText ctermfg=234
@@ -112,6 +112,8 @@ nnoremap <C-J> <C-W><C-J>
 nnoremap <C-K> <C-W><C-K>
 nnoremap <C-L> <C-W><C-L>
 nnoremap <C-H> <C-W><C-H>
+
+"General settings
 set tabstop=4
 set softtabstop=4
 set shiftwidth=4
@@ -141,4 +143,3 @@ au BufNewFile,BufRead *.hs set shiftround                  "Round indent to near
 " au BufEnter *.hs compiler ghc
 " let g:haddock_browser="/usr/bin/firefox"
 "
-let g:Powerline_symbols = 'fancy'

@@ -68,8 +68,8 @@ function __git_prompt {
       echo -n $UNMERGED
     fi
     echo -n `git branch | grep '* ' | sed 's/..//'`
-    echo -n $RESET
 	echo -n "]"
+	#echo -n $RESET
   fi
 }
 

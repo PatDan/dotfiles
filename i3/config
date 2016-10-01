@@ -30,10 +30,10 @@ set $left h
 set $right l
 
 # class                 border  backgr. text    indicator
-client.focused          #252C34C8 #252C34C8 #ffffff #FFFFFF
-client.focused_inactive #252C34C8 #252C34C8 #eeeeee #FFFFFF
-client.unfocused        #252C34F2 #252C34F2 #eeeeee #FFFFFF
-client.urgent           #FFFFFF #FFFFFF #ffffff #FFFFFF
+client.focused          #2E343c #2E343c #ffffff #2E343c
+client.focused_inactive #2E343c #2E343c #eeeeee #2E343c
+client.unfocused        #2E343c #2E343c #eeeeee #2E343c
+client.urgent           #2E343c #2E343c #ffffff #2E343c
 # use Mouse+Mod1 to drag floating windows to their wanted position
 floating_modifier Mod4
 
@@ -134,6 +134,10 @@ bindsym Mod4+8 workspace $ws8
 bindsym Mod4+9 workspace $ws9
 bindsym Mod4+10 workspace $ws10
 
+workspace_auto_back_and_forth yes
+bindsym $mod+Tab workspace next
+# bindsym $mod+Shift+Tab workspace back_and_forth
+
 
 # move focused container to workspace
 bindsym Mod4+Shift+1 move container to workspace $ws1
@@ -184,7 +188,9 @@ mode " resize " {
         bindsym Return mode "default"
         bindsym Escape mode "default"
 }
-set $status_bg     #252C34F2
+#set $status_bg     #252C34F2
+#set $status_bg     #2E343c222428
+set $status_bg     #2E343c
 bindsym Mod4+r mode " resize "
 
 # Start i3bar to display a workspace bar (plus the system information i3status
@@ -193,10 +199,13 @@ bindsym Mod4+r mode " resize "
 	#position top
         #status_command i3status
 #}
+#bar {
+	#i3bar_command ~./.i3/lemonbar/i3_lemonbar.sh
+#}
 bar {
   position top
   status_command i3blocks
-  i3bar_command i3bar -t
+  i3bar_command i3bar
   #i3bar_command ~/.i3/lemonbar/i3_lemonbar.sh
   font pango:Hack, Awesome 9
   height 20
@@ -206,10 +215,12 @@ bar {
     separator            #666666
     statusline           #dddddd
 	background $status_bg
-	focused_workspace #252C34C8 #252C34C8 #FFFFFF
-	active_workspace #252C34C8 #252C34C8 #FFFFFF
-	inactive_workspace $status_bg $status_bg #EEEEEE
-	urgent_workspace #000000 #000000 #EEEEEE
+	focused_workspace #7080a9 #7080a9 #ffffff
+##h#focused_workspace #EEEEEE #EEEEEE #000000
+	#active_workspace #252C34C8 #252C34C8 #FFFFFF
+	active_workspace #2e343c #2e343c #FFFFFF
+	inactive_workspace $status_bg $status_bg #FFFFFF
+	urgent_workspace #F5A3A3 #F5A3A3 #FFFFFF
 	binding_mode       #F5A3A3 #F5A3A3 $status_bg
 	}
 }
@@ -240,22 +251,23 @@ exec --no-startup-id nitrogen --restore
 exec --no-startup-id compton --backend glx --paint-on-overlay --glx-no-stencil --vsync opengl-swc --shadow-exclude "! name~=''" --config ~/.compton.conf -b
 
 #For gdm
-#exec --no-startup-id xinput set-prop 11 285 1
+exec --no-startup-id xinput set-prop 11 285 1
+exec --no-startup-id xinput set-prop 11 277 1
 #For lightdm
-exec --no-startup-id xinput set-prop 11 286 1
-exec --no-startup-id xinput set-prop 11 278 1
+#exec --no-startup-id xinput set-prop 11 286 1
+#exec --no-startup-id xinput set-prop 11 278 1
 
 # Pulse Audio controls
-bindsym XF86AudioRaiseVolume exec --no-startup-id pactl set-sink-volume 0 +5%
+bindsym XF86AudioRaiseVolume exec --no-startup-id pactl set-sink-volume 0 +5% && pkill -RTMIN+1 i3blocks
 # #increase sound volume
-bindsym XF86AudioLowerVolume exec --no-startup-id pactl set-sink-volume 0 -5%
+bindsym XF86AudioLowerVolume exec --no-startup-id pactl set-sink-volume 0 -5% && pkill -RTMIN+1 i3blocks
 # #decrease sound volume
-bindsym XF86AudioMute exec --no-startup-id pactl set-sink-mute 0 toggle #
+bindsym XF86AudioMute exec --no-startup-id pactl set-sink-mute 0 toggle && pkill -RTMIN+1 i3blocks
 # mute sound
 #
 # # Sreen brightness controls
-bindsym XF86MonBrightnessUp exec --no-startup-id light -A 8
-bindsym XF86MonBrightnessDown exec --no-startup-id light -U 8
+bindsym XF86MonBrightnessUp exec --no-startup-id light -A 8 && pkill -RTMIN+2 i3blocks
+bindsym XF86MonBrightnessDown exec --no-startup-id light -U 8 && pkill -RTMIN+2 i3blocks
 #
 # # Touchpad controls
 #
