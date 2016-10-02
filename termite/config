@@ -5,9 +5,7 @@ font =  Droid Sans Mono Dotted for Powerline 11
 # Base16 Ashes
 # Scheme: Jannik Siebert (https://github.com/janniks)
 
-#background = rgba(45, 48, 53, 0.95)
 background = rgba(39, 44, 51, 0.95)
-#foreground      = #C7CCD1
 foreground      = #DDDDDD
 foreground_bold = #DDDDDD
 cursor          = #DDDDDD
@@ -16,15 +14,15 @@ cursor          = #DDDDDD
 
 #dark blue
 color0  = #1C2023
-#expired peach
+#light pink
 color1  = #FFA9D4
 #aquamarine
 color2  = #8FD3C3
-#light pink
+#pink petals
 color3  = #FF6896
 #royal blue
 color4  = #69A5E5
-#light purple
+#lavender
 color5  = #CA8FEB
 #ice blue
 color6  = #BFDFFF
@@ -32,15 +30,15 @@ color6  = #BFDFFF
 color7  = #C7CCD1
 #blue grey
 color8  = #747C84
-#expired peach
+#light pink
 color9  = #FFA9D4
 #aquamarine
 color10  = #8FD3C3
-#light pink
+#pink petals
 color11 = #FF6896
 #royal blue
 color12  = #69A5E5
-#light purple
+#lavender
 color13 = #CA8FEB
 #ice blue
 color14 = #BFDFFF
@@ -54,17 +52,5 @@ color18 = #393F45
 color19 = #565E65
 color20 = #ADB3BA
 color21 = #DFE2E5
-
 color22 = #252C34
-
-#NONUSEDCOLORS
-#light forest green
-#color2  = #AEE0C7
-#light topaz
-#color3  = #F5F3E2
-#dirty gold
-#color3  = #D3C379
-
-#NORMAL
-#color22 = #000000
 
