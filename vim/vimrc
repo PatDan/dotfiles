@@ -18,7 +18,9 @@ set t_Co=256
 " Autoreload .vimrc
 autocmd! bufwritepost .vimrc source %
 
+" Mapleader
 let mapleader ="\<Space>"
+
 " Move lines
 let c='a'
 while c <= 'z'
@@ -79,16 +81,15 @@ nnoremap <Leader>c :make!<cr>
 nnoremap <Leader>e :silent !clear<cr> <bar> :!./%<<cr>
 nnoremap <Leader>C :!./%<<cr>
 
-" Visible line for line length
-set colorcolumn=81
-
 " Autoclose function documentation in autocomplete
 autocmd CursorMovedI * if pumvisible() == 0|pclose|endif
 autocmd InsertLeave * if pumvisible() == 0|pclose|endif
 
-set background=dark
+" Visible line for line length
+set colorcolumn=81
 
 " Color settings
+set background=dark
 highlight ColorColumn ctermbg=22
 highlight linenr ctermfg=244
 highlight CursorLineNr ctermfg=244
@@ -112,6 +113,9 @@ nnoremap <C-J> <C-W><C-J>
 nnoremap <C-K> <C-W><C-K>
 nnoremap <C-L> <C-W><C-L>
 nnoremap <C-H> <C-W><C-H>
+
+"Make textblocks
+set foldmethod=marker
 
 "General settings
 set tabstop=4
