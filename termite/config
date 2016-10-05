@@ -14,12 +14,12 @@ cursor          = #DDDDDD
 
 #dark blue
 color0  = #1C2023
-#light pink
-color1  = #FFA9D4
+#pink petals
+color1  = #FF6896
 #aquamarine
 color2  = #8FD3C3
-#pink petals
-color3  = #FF6896
+#light pink
+color3  = #FFA9D4
 #royal blue
 color4  = #69A5E5
 #lavender
@@ -30,12 +30,12 @@ color6  = #BFDFFF
 color7  = #C7CCD1
 #blue grey
 color8  = #747C84
-#light pink
-color9  = #FFA9D4
+#pink petals
+color9 = #FF6896
 #aquamarine
 color10  = #8FD3C3
-#pink petals
-color11 = #FF6896
+#light pink
+color11  = #FFA9D4
 #royal blue
 color12  = #69A5E5
 #lavender

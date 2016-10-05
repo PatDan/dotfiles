@@ -94,7 +94,7 @@ highlight ColorColumn ctermbg=22
 highlight linenr ctermfg=244
 highlight CursorLineNr ctermfg=244
 highlight NonText ctermfg=234
-highlight PreProc ctermfg=1
+highlight PreProc ctermfg=3
 highlight Special ctermfg=4
 highlight Type ctermfg=2
 highlight VertSplit ctermfg=238
@@ -102,6 +102,7 @@ highlight VertSplit ctermbg=238
 highlight StatusLineNC ctermfg=240
 highlight Directory ctermfg=6
 highlight Title ctermfg=15
+highlight Statement ctermfg=1
 set relativenumber
 
 "Nerdtree settings
@@ -121,6 +122,9 @@ set foldmethod=marker
 set tabstop=4
 set softtabstop=4
 set shiftwidth=4
+
+"Dont use escape!
+:imap jk <Esc>
 
 "Python settings
 au BufNewFile,BufRead *.py set tabstop=4

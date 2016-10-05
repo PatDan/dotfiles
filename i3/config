@@ -188,24 +188,14 @@ mode " resize " {
         bindsym Return mode "default"
         bindsym Escape mode "default"
 }
-#set $status_bg     #252C34F2
-#set $status_bg     #2E343c222428
 set $status_bg     #2E343c
 bindsym Mod4+r mode " resize "
 
-# Start i3bar to display a workspace bar (plus the system information i3status
-# finds out, if available)
-#bar {
-	#position top
-        #status_command i3status
-#}
-#bar {
-	#i3bar_command ~./.i3/lemonbar/i3_lemonbar.sh
-#}
+# i3 bar with i3blocks
 bar {
   position top
   status_command i3blocks
-  i3bar_command i3bar
+  i3bar_command i3bar -t
   #i3bar_command ~/.i3/lemonbar/i3_lemonbar.sh
   font pango:Hack, Awesome 9
   height 20
@@ -215,13 +205,11 @@ bar {
     separator            #666666
     statusline           #dddddd
 	background $status_bg
-	focused_workspace #7080a9 #7080a9 #ffffff
-##h#focused_workspace #EEEEEE #EEEEEE #000000
-	#active_workspace #252C34C8 #252C34C8 #FFFFFF
-	active_workspace #2e343c #2e343c #FFFFFF
+	focused_workspace #7080a900 #7080a900 #ffffff
+	active_workspace #7080a900 #7080a900 #ffffff
 	inactive_workspace $status_bg $status_bg #FFFFFF
-	urgent_workspace #F5A3A3 #F5A3A3 #FFFFFF
-	binding_mode       #F5A3A3 #F5A3A3 $status_bg
+	urgent_workspace #FF6896 #FF6896 #000000
+	binding_mode       #FF6896 #FF6896 #000000
 	}
 }
 # bar {
@@ -231,22 +219,14 @@ bar {
 #for_window [class="^.*"] border pixel 
 #
 
-#Gaps
+# Gaps
 smart_gaps on
 smart_borders on
 gaps inner 10
 gaps outer 0
 new_window pixel 0
 
-#######################################################################
-# automatically start i3-config-wizard to offer the user to create a
-# keysym-based config which used their favorite modifier (alt or windows)
-#
-# i3-config-wizard will not launch if there already is a config file
-# in ~/.i3/config.
-#
-# Please remove the following exec --no-startup-id line:
-#######################################################################
+# Background and compositor
 exec --no-startup-id nitrogen --restore
 exec --no-startup-id compton --backend glx --paint-on-overlay --glx-no-stencil --vsync opengl-swc --shadow-exclude "! name~=''" --config ~/.compton.conf -b
 
