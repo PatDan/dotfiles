@@ -205,7 +205,7 @@ bar {
     separator            #666666
     statusline           #dddddd
 	background $status_bg
-	focused_workspace #7080a900 #7080a900 #ffffff
+	focused_workspace #6079C000 #6079C000 #ffffff
 	active_workspace #7080a900 #7080a900 #ffffff
 	inactive_workspace $status_bg $status_bg #FFFFFF
 	urgent_workspace #FF6896 #FF6896 #000000
@@ -231,8 +231,8 @@ exec --no-startup-id nitrogen --restore
 exec --no-startup-id compton --backend glx --paint-on-overlay --glx-no-stencil --vsync opengl-swc --shadow-exclude "! name~=''" --config ~/.compton.conf -b
 
 #For gdm
-exec --no-startup-id xinput set-prop 11 285 1
 exec --no-startup-id xinput set-prop 11 277 1
+exec --no-startup-id xinput set-prop 11 287 1
 #For lightdm
 #exec --no-startup-id xinput set-prop 11 286 1
 #exec --no-startup-id xinput set-prop 11 278 1

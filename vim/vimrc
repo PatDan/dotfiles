@@ -90,6 +90,7 @@ set colorcolumn=81
 
 " Color settings
 set background=dark
+" highlight ColorColumn ctermbg=22
 highlight ColorColumn ctermbg=22
 highlight linenr ctermfg=244
 highlight CursorLineNr ctermfg=244
