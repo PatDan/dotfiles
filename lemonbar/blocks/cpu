@@ -1,0 +1,15 @@
+#!/bin/bash
+
+load="$(cut -d ' ' -f1 /proc/loadavg)"
+cpus="$(nproc)"
+
+# full text
+echo " $load"
+
+# short text
+echo " $load"
+
+# color if load is too high
+if [ $(awk 'BEGIN{ print "'$cpus'"<="'$load'" }') -eq 1 ]; then
+        echo "#FF0000"
+fi

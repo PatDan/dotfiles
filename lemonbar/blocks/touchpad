@@ -1,0 +1,16 @@
+#!/bin/bash
+
+if [ -e '/usr/bin/synclient' ]
+then
+    enable=$(synclient -l | grep -c 'TouchpadOff.*=.*0')
+
+    if [ $enable == 1 ]; then
+        echo '[ ]'
+        echo ''
+        echo '#00FF00'
+    else
+        echo '[X]'
+        echo ''
+        echo '#FF0000'
+    fi
+fi

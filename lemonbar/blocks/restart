@@ -1,0 +1,5 @@
+#!/bin/sh
+case $BLOCK_BUTTON in
+	1) i3-nagbar -t warning -m 'You pressed the reboot shortcut. Do you really want to reboot?' -b 'Yes, reboot' 'reboot' >/dev/null;;
+esac
+echo '    '

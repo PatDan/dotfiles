@@ -1,0 +1,44 @@
+#!/bin/sh
+
+TYPE="${1:-mem}"
+ALERT_MAX="${2:-80}"
+
+awk -v type=$TYPE -v alert_max=$ALERT_MAX '
+/^MemTotal:/ {
+        mem_total=$2
+}
+/^MemFree:/ {
+        mem_free=$2
+}
+/^Buffers:/ {
+        mem_free+=$2
+}
+/^Cached:/ {
+        mem_free+=$2
+}
+/^SwapTotal:/ {
+        swap_total=$2
+}
+/^SwapFree:/ {
+        swap_free=$2
+}
+END {
+    mem_used=(mem_total - mem_free)/mem_total*100
+
+    # full text
+    if (type == "swap")
+        printf("SWAP: %.1fG\n", (swap_total-swap_free)/1024/1024)
+    else
+        printf(" %.1f%\n ", mem_used)
+
+    # TODO: short text
+    if (type == "swap")
+        printf("SWAP: %.1fG\n", (swap_total-swap_free)/1024/1024)
+    else
+        printf("Ω %.1f%\n", (mem_total - mem_free)/mem_total*100)
+
+    # color
+    if (+ mem_used > + alert_max)
+        print "#FF0000"
+}
+' /proc/meminfo
