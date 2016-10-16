@@ -14,15 +14,15 @@ foreground_bold = #DDDDDD
 
 #dark blue
 color0  = #1C2023
-#pink petals
+#red
 color1  = #a3898c
 #aquamarine
 color2  = #84cdc9
-#light pink
+#light brown
 color3  = #b0aca9
-#royal blue
+#green
 color4  = #729597
-#lavender
+#brown
 color5  = #908a8a
 #ice blue
 color6  = #aac3c8
@@ -31,15 +31,15 @@ color6  = #aac3c8
 color7  = #FFFFFF
 #blue grey
 color8  = #747C84
-#pink petals
+#red
 color9 = #a3898c
 #aquamarine
 color10  = #84cdc9
-#light pink
+#light brown
 color11  = #b0aca9
-#royal blue
+#green
 color12  = #729597
-#lavender
+#brown
 color13 = #908a8a
 #ice blue
 color14 = #aac3c8
