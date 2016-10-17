@@ -22,6 +22,9 @@ Workspaces() {
 Network() {
 		echo "$(~/.config/lemonbar/blocks/network)"
 }
+Lock() {
+		echo "$(~/.config/lemonbar/blocks/lock)"
+}
 Info() {
 	echo " %{l}%{F#FFFFFF}%{B#2E343C} $(Network) $(Brightness)%{c}$(Workspaces)%{F-}%{B-}%{r}%{f#ffffff}%{B#2E343C}$(Battery) $(Volume) $(Clock)%{F-}%{B-}"
 }
