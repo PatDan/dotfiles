@@ -1,37 +1,78 @@
 #!/usr/bin/bash
-# Define the clock
+
+
+
+barpid="$$"
+trap 'trap - TERM; kill 0' INT TERM QUIT EXIT
+if [ $(pgrep -cx lemonbar) -gt 0 ] ; then
+	printf "%s\n" "The panel is already running." >&2
+	exit 1
+fi
+fifo="/tmp/panel_fifo"
+[ -e "$fifo" ] && rm "$fifo"
+mkfifo "$fifo"
+
+Windowtitle() {
+		echo "Windowtitle "$(~/.config/lemonbar/blocks/windowtitle)
+}
+
 Clock() {
-		echo "$(~/.config/lemonbar/blocks/time)"
+		echo "Clock "$(~/.config/lemonbar/blocks/time)
 }
 
 Battery() {
-		echo "$(~/.config/lemonbar/blocks/battery)"
+		echo "Battery "$(~/.config/lemonbar/blocks/battery)
 }
 Brightness() {
-		echo "$(~/.config/lemonbar/blocks/brightness)"
+		echo "Brightness "$(~/.config/lemonbar/blocks/brightness)
 }
 Volume() {
-		echo "$(~/.config/lemonbar/blocks/volume)"
+		echo "Volume "$(~/.config/lemonbar/blocks/volume)
 }
 
 
 Workspaces() {
 		WORKSPACES="$(i3-msg -t get_workspaces)"
-		echo $(~/.config/lemonbar/workspaces.py $WORKSPACES)
+		echo "Workspaces "$(~/.config/lemonbar/workspaces.py $WORKSPACES)
 }
 Network() {
-		echo "$(~/.config/lemonbar/blocks/network)"
+		echo "Network "$(~/.config/lemonbar/blocks/network)
 }
-Lock() {
-		echo "$(~/.config/lemonbar/blocks/lock)"
-}
-Info() {
-	echo " %{l}%{F#FFFFFF}%{B#2E343C} $(Network) $(Brightness)%{c}$(Workspaces)%{F-}%{B-}%{r}%{f#ffffff}%{B#2E343C}$(Battery) $(Volume) $(Clock)%{F-}%{B-}"
-}
-trap 'kill $pid' 36
-trap 'exit' SIGINT
-while true; do
-	echo $(Info)' '
-    sleep 1 & pid=$!
-	wait
-done
+
+
+while :; do Workspaces; sleep 30s; done > "$fifo" &
+while :; do Volume; sleep 1s; done > "$fifo" &
+while :; do Clock; sleep 60s; done > "$fifo" &
+while :; do Brightness; sleep 3s; done > "$fifo" &
+while :; do Battery; sleep 30s; done > "$fifo" &
+while :; do Network; sleep 10s; done > "$fifo" &
+while :; do Windowtitle; sleep 5s; done > "$fifo" &
+
+
+while read -r line ; do
+    case $line in
+        Workspaces*)
+            ws="${line:11}"
+            ;;
+        Volume*)
+            vl="${line:7}"
+            ;;
+        Clock*)
+            cl="${line:5}"
+            ;;
+        Battery*)
+            bt="${line:7}"
+            ;;
+        Network*)
+            nt="${line:7}"
+            ;;
+        Brightness*)
+            bn="${line:10}"
+            ;;
+        Windowtitle*)
+            wt="${line:11}"
+            ;;
+    esac
+	echo " %{l}%{F#FFFFFF}$nt$bn%{c}$ws%{F-}%{B-}%{r}%{f#ffffff}$bt $vl$cl %{F-}%{B-}"
+done < "$fifo" | lemonbar -f "Hack:size=10" -o 0 -f "FontAwesome:size=10" \
+	-o -1 -f "Material Icons:size=10" -B "#2E343c" -g 1920x20+0+0 | bash; exit

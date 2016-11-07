@@ -5,46 +5,49 @@ font =  Droid Sans Mono Dotted for Powerline 11
 # Base16 Ashes
 # Scheme: Jannik Siebert (https://github.com/janniks)
 
-background = rgba(39, 44, 51, 0.95)
+background = rgba(39, 44, 51, 0.97)
 foreground      = #DDDDDD
 foreground_bold = #DDDDDD
 #cursor          = #DDDDDD
 
 # 16 color space
 
-#dark blue
-color0  = #1C2023
-#red
-color1  = #a3898c
-#aquamarine
-color2  = #84cdc9
-#light brown
-color3  = #b0aca9
-#green
-color4  = #729597
-#brown
-color5  = #908a8a
-#ice blue
-color6  = #aac3c8
-#grey ice blue
-#color7  = #C7CCD1
-color7  = #FFFFFF
-#blue grey
-color8  = #747C84
-#red
-color9 = #a3898c
-#aquamarine
-color10  = #84cdc9
-#light brown
-color11  = #b0aca9
-#green
-color12  = #729597
-#brown
-color13 = #908a8a
-#ice blue
-color14 = #aac3c8
-#white
-color15 = #FFFFFF
+
+
+# black
+color0  = #282a2e
+color8  = #373b41
+
+# red
+color1  = #CD647B
+color9  = #CD647B
+
+# green
+#color2  = #8e977c
+color2  = #a1b59c
+color10 = #a1b59c
+
+# yellow
+color3  = #fed8a9
+color11 = #fed8a9
+
+# blue
+color4  = #75a2c1
+color12 = #75a2c1
+
+# magenta
+color5  = #BA9FB4
+color13 = #BA9FB4
+
+# cyan
+color6  = #b9cad4
+color14 = #b9cad4
+
+# white
+#color7  = #707880
+color7  = #ffffff
+#color15 = #c5c8c6
+color15 = #ffffff
  
 # 256 color space
 color16 = #C7C795

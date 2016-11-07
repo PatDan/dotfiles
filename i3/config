@@ -31,9 +31,9 @@ set $right l
 
 # class                 border  backgr. text    indicator
 client.focused          #2E343c #2E343c #ffffff #2E343c
-client.focused_inactive #2E343c #2E343c #eeeeee #2E343c
-client.unfocused        #2E343c #2E343c #eeeeee #2E343c
-#client.unfocused        #272C33F0 #272C33F0 #eeeeee #272C33F0
+client.focused_inactive #2E343c #2E343c #cccccc #2E343c
+client.unfocused        #2E343c #2E343c #cccccc #2E343c
+#client.unfocused        #272C33F0 #272C33F0 #cccccc #272C33F0
 client.urgent           #2E343c #2E343c #ffffff #2E343c
 # use Mouse+Mod1 to drag floating windows to their wanted position
 floating_modifier Mod4
@@ -113,27 +113,27 @@ bindsym Mod4+minus scratchpad show
 
 
 set $mod Mod4
-set $ws1  1:
-set $ws2  2:
-set $ws3  3:
-set $ws4  4:
-set $ws5  5:
-set $ws6  6:
-set $ws7  7:
-set $ws8  8:
-set $ws9  9:
-set $ws10  10:
+set $ws1  1
+set $ws2  2
+set $ws3  3
+set $ws4  4
+set $ws5  5
+set $ws6  6
+set $ws7  7
+set $ws8  8
+set $ws9  9
+set $ws10  10
 # switch to workspace
-bindsym $mod+1 exec --no-startup-id i3-msg workspace $ws1 && pkill -36 bar.sh
-bindsym $mod+2 exec --no-startup-id i3-msg workspace $ws2 && pkill -36 bar.sh
-bindsym $mod+3 exec --no-startup-id i3-msg workspace $ws3 && pkill -36 bar.sh
-bindsym $mod+4 exec --no-startup-id i3-msg workspace $ws4 && pkill -36 bar.sh
-bindsym $mod+5 exec --no-startup-id i3-msg workspace $ws5 && pkill -36 bar.sh
-bindsym $mod+6 exec --no-startup-id i3-msg workspace $ws6 && pkill -36 bar.sh
-bindsym $mod+7 exec --no-startup-id i3-msg workspace $ws7 && pkill -36 bar.sh
-bindsym $mod+8 exec --no-startup-id i3-msg workspace $ws8 && pkill -36 bar.sh
-bindsym $mod+9 exec --no-startup-id i3-msg workspace $ws9 && pkill -36 bar.sh
-bindsym $mod+10 exec --no-startup-id i3-msg workspace $ws10 && pkill -36 bar.sh
+bindsym $mod+1 exec --no-startup-id i3-msg workspace $ws1 && /home/patrik/.config/lemonbar/workspaces.sh
+bindsym $mod+2 exec --no-startup-id i3-msg workspace $ws2 && /home/patrik/.config/lemonbar/workspaces.sh
+bindsym $mod+3 exec --no-startup-id i3-msg workspace $ws3 && /home/patrik/.config/lemonbar/workspaces.sh
+bindsym $mod+4 exec --no-startup-id i3-msg workspace $ws4 && /home/patrik/.config/lemonbar/workspaces.sh
+bindsym $mod+5 exec --no-startup-id i3-msg workspace $ws5 && /home/patrik/.config/lemonbar/workspaces.sh
+bindsym $mod+6 exec --no-startup-id i3-msg workspace $ws6 && /home/patrik/.config/lemonbar/workspaces.sh
+bindsym $mod+7 exec --no-startup-id i3-msg workspace $ws7 && /home/patrik/.config/lemonbar/workspaces.sh
+bindsym $mod+8 exec --no-startup-id i3-msg workspace $ws8 && /home/patrik/.config/lemonbar/workspaces.sh
+bindsym $mod+9 exec --no-startup-id i3-msg workspace $ws9 && /home/patrik/.config/lemonbar/workspaces.sh
+bindsym $mod+10 exec --no-startup-id i3-msg workspace $ws10 && /home/patrik/.config/lemonbar/workspaces.sh
 
 workspace_auto_back_and_forth yes
 bindsym $mod+Tab workspace next
@@ -213,12 +213,11 @@ bindsym Mod4+r mode " resize "
 #	binding_mode       #FF6896 #FF6896 #000000
 #	}
 #}
-# bar {
-    # i3bar_command /home/patrik/.i3/lemonbar/i3_lemonbar.sh
-# }
 
-#for_window [class="^.*"] border pixel 
-#
+bar {
+    i3bar_command /home/patrik/.config/lemonbar/bar.sh
+}
+
 
 # Gaps
 smart_gaps on
@@ -230,7 +229,7 @@ new_window pixel 0
 # Background and compositor
 exec --no-startup-id nitrogen --restore
 exec --no-startup-id compton --backend glx --paint-on-overlay --glx-no-stencil --vsync opengl-swc --shadow-exclude "! name~=''" --config ~/.compton.conf -b
-exec --no-startup-id /home/patrik/.config/lemonbar/bar.sh | lemonbar -f "Hack:size=10" -f "FontAwesome:size=10" -f "Material Icons:size=10" -B "#2E343c"
+exec --no-startup-id /home/patrik/.config/lemonbar/bar.sh | lemonbar -f "Hack:size=10" -o 0 -f "FontAwesome:size=10" -o -1 -f "Material Icons:size=10" -B "#2E343c" -g 1920x20+0+0
 
 #For gdm
 exec --no-startup-id xinput set-prop 11 277 1
@@ -244,16 +243,15 @@ bindsym XF86AudioRaiseVolume exec --no-startup-id pactl set-sink-volume 0 +5%
 # #increase sound volume
 bindsym XF86AudioLowerVolume exec --no-startup-id pactl set-sink-volume 0 -5%
 # #decrease sound volume
-bindsym XF86AudioMute exec --no-startup-id pactl set-sink-mute 0 toggle && pkill -RTMIN+1 i3blocks
+bindsym XF86AudioMute exec --no-startup-id pactl set-sink-mute 0 toggle 
 # mute sound
 #
 # # Sreen brightness controls
-bindsym XF86MonBrightnessUp exec --no-startup-id light -A 8 && pkill -RTMIN+2 i3blocks
-bindsym XF86MonBrightnessDown exec --no-startup-id light -U 8 && pkill -RTMIN+2 i3blocks
+bindsym XF86MonBrightnessUp exec --no-startup-id light -A 8
+bindsym XF86MonBrightnessDown exec --no-startup-id light -U 8
 #
 # # Touchpad controls
 #
-# exec --no-startup-id pkill -36 bar.sh
 # # Media player controls
 bindsym XF86AudioPlay exec --no-startup-id playerctl play
 bindsym XF86AudioPause exec --no-startup-id playerctl pause

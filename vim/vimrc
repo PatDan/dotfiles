@@ -91,7 +91,7 @@ set colorcolumn=81
 " Color settings
 set background=dark
 " highlight ColorColumn ctermbg=22
-highlight ColorColumn ctermbg=22
+highlight ColorColumn ctermbg=236
 highlight linenr ctermfg=244
 highlight CursorLineNr ctermfg=244
 highlight NonText ctermfg=234
@@ -104,6 +104,8 @@ highlight StatusLineNC ctermfg=240
 highlight Directory ctermfg=6
 highlight Title ctermfg=15
 highlight Statement ctermfg=1
+highlight MoreMsg ctermfg=2
+highlight Question ctermfg=2
 set relativenumber
 
 "Nerdtree settings
@@ -126,6 +128,15 @@ set shiftwidth=4
 
 "Dont use escape!
 :imap jk <Esc>
+
+let g:netrw_banner = 0
+let g:netrw_liststyle = 3
+let g:netrw_browse_split = 4
+let g:netrw_altv = 1
+let g:netrw_winsize = 25
+augroup ProjectDrawer
+	autocmd!
+augroup END
 
 "Python settings
 au BufNewFile,BufRead *.py set tabstop=4
