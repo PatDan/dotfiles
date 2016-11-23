@@ -1,2 +1,3 @@
-#!/bin/bash
-next_appointment
+#!/bin/sh
+
+echo -n " $(date "+%d %B")"

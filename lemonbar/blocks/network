@@ -10,9 +10,9 @@ for INTERFACE in $(ls /sys/class/net/); do
 		iwid="$(iwgetid -r)"
 
 		if [ "$INTERFACE" = "wlp4s0" ]; then
-			text=" $text |    $iwid    $ipaddr"
+			text=" $text |  $iwid $ipaddr"
 		else
-			text=" $text |   wired    $ipaddr"
+			text=" $text |   wired $ipaddr"
 		fi
     fi
 done
@@ -21,5 +21,6 @@ if [ -n "$text" ]; then
     text=$(echo $text | sed "s/^| //")
     echo $text
 else
-    echo ' '"-/->"' '
+    #echo ' '"-/->"' '
+    echo " No connection"
 fi

@@ -3,9 +3,76 @@
 CARD="${1:-0}"
 MIXER="${2:-default}"
 trap "echo Booh!" SIGHUP
-symbol=$(amixer -c $CARD -M -D $MIXER get Master | grep Playback | grep -q off && echo '' || echo ' ''  ')
+mute=$(amixer -c $CARD -M -D $MIXER get Master | grep Playback | grep -q off && echo 1 || echo 0)
+if [ $mute -eq 1 ]
+then
+	echo " %{F#777777}%{+u +o}%{-u -o}━━━━━━━━━━━━━━"
+else
+	# echo "%{+u +o}%{-u -o}━━━━━━━%{+u +o}▊%{-u -o}%{F#777777}━━━━━━━"
+	pc=$(amixer -c $CARD -M -D $MIXER get Master |
+	echo $(sed -n "s/^[^:]*: Playback [0-9]* \[\([0-9]*%\)\] .*/$symbol \1/p" | head -n1))
+	pc=${pc::-1}
+	if [ $pc -eq 100 ]
+	then
+		echo " %{+u +o}%{-u -o}━━━━━━━━━━━━━━%{+u +o}%{-u -o}%{F#777777}"
+	elif [ $pc -gt 91 ]
+	then
+		echo " %{+u +o}%{-u -o}━━━━━━━━━━━━━%{+u +o}%{-u -o}%{F#777777}━%{F#777777}"
+	elif [ $pc -gt 83 ]
+	then
+		echo " %{+u +o}%{-u -o}━━━━━━━━━━━━%{+u +o}%{-u -o}%{F#777777}━━%{F#777777}"
+	elif [ $pc -gt 75 ]
+	then
+		echo " %{+u +o}%{-u -o}━━━━━━━━━━━%{+u +o}%{-u -o}%{F#777777}━━━%{F#777777}"
+	elif [ $pc -gt 67 ]
+	then
+		echo " %{+u +o}%{-u -o}━━━━━━━━━━%{+u +o}%{-u -o}%{F#777777}━━━━%{F#777777}"
+	elif [ $pc -gt 59 ]
+	then
+		echo " %{+u +o}%{-u -o}━━━━━━━━━%{+u +o}%{-u -o}%{F#777777}━━━━━%{F#777777}"
+	elif [ $pc -gt 51 ]
+	then
+		echo " %{+u +o}%{-u -o}━━━━━━━━%{+u +o}%{-u -o}%{F#777777}━━━━━━%{F#777777}"
+	elif [ $pc -gt 43 ]
+	then
+		echo " %{+u +o}%{-u -o}━━━━━━━%{+u +o}%{-u -o}%{F#777777}━━━━━━━%{F#777777}"
+	elif [ $pc -gt 35 ]
+	then
+		echo " %{+u +o}%{-u -o}━━━━━━%{+u +o}%{-u -o}%{F#777777}━━━━━━━━%{F#777777}"
+	elif [ $pc -gt 27 ]
+	then
+		echo " %{+u +o}%{-u -o}━━━━━%{+u +o}%{-u -o}%{F#777777}━━━━━━━━━%{F#777777}"
+	elif [ $pc -gt 19 ]
+	then
+		echo " %{+u +o}%{-u -o}━━━━%{+u +o}%{-u -o}%{F#777777}━━━━━━━━━━%{F#777777}"
+	elif [ $pc -gt 11 ]
+	then
+		echo " %{+u +o}%{-u -o}━━━%{+u +o}%{-u -o}%{F#777777}━━━━━━━━━━━"
+	elif [ $pc -gt 3 ]
+	then
+		echo " %{+u +o}%{-u -o}━━%{+u +o}%{-u -o}%{F#777777}━━━━━━━━━━━━"
+	else
+		# if [ $pc -eq 0 ]
+		# then
+			# echo "%{+u +o}%{-u -o}%{+u +o}%{-u -o}%{F#777777}━━━━━━━━━━━━━━"
+		# else
+		echo " %{+u +o}%{-u -o}━%{+u +o}%{-u -o}%{F#777777}━━━━━━━━━━━━━"
+		# fi
+	fi
+fi
 
-amixer -c $CARD -M -D $MIXER get Master |
-echo $(sed -n "s/^[^:]*: Playback [0-9]* \[\([0-9]*%\)\] .*/$symbol \1/p" | head -n1)
+
+
+
+
+
+
+
+
+
+	
+
+#amixer -c $CARD -M -D $MIXER get Master |
+#echo $(sed -n "s/^[^:]*: Playback [0-9]* \[\([0-9]*%\)\] .*/$symbol \1/p" | head -n1)
 #echo ""
 #echo $(amixer -c $CARD -M -D $MIXER get Master | grep Playback | grep -q off && echo "#F5A3A3" || echo "#EEEEEE")

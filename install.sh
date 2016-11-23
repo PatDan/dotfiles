@@ -16,7 +16,6 @@ if [ ! -e "$HOME/.tmux.conf" ]; then
 fi
 if [ ! -e "$HOME/.vim" ]; then
 	ln -s $HOME/.dotfiles/vim $HOME/.vim &&
-	git clone https://github.com/klen/python-mode.git $HOME/.vim/bundle/python-mode &&
 	git clone https://github.com/scrooloose/nerdtree.git $HOME/.vim/bundle/nerdtree &&
 	git clone https://github.com/jistr/vim-nerdtree-tabs.git $HOME/.vim/bundle/vim-nerdtree-tabs &&
 	git clone https://github.com/vim-scripts/indentpython.vim.git $HOME/.vim/bundle/indentpython.vim &&

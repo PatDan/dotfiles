@@ -15,7 +15,8 @@ foreground_bold = #DDDDDD
 #dark blue
 color0  = #1C2023
 #red
-color1  = #a3898c
+# color1  = #a3898c
+color1  = #f6887a
 #aquamarine
 color2  = #84cdc9
 #light brown
@@ -32,7 +33,7 @@ color7  = #FFFFFF
 #blue grey
 color8  = #747C84
 #red
-color9 = #a3898c
+color9 = #f6887a
 #aquamarine
 color10  = #84cdc9
 #light brown

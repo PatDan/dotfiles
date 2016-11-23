@@ -19,31 +19,31 @@ color0  = #282a2e
 color8  = #373b41
 
 # red
-color1  = #da866d
-color9  = #da866d
+color1  = #CD647B
+color9  = #CD647B
 
 # green
-color2  = #7b9b86
-color10 = #7b9b86
+#color2  = #8e977c
+color2  = #a1b59c
+color10 = #a1b59c
 
 # yellow
-color3  = #e9cb9e
-color11 = #e9cb9e
+color3  = #fed8a9
+color11 = #fed8a9
 
 # blue
-color4  = #7b98b3
-color12 = #7b98b3
+color4  = #5c92b4
+color12 = #5c92b4
 #color12 = #75a2c1
 
 # magenta
-#color5  = #aa9ca9
-color5  = #b4a3ac
+color5  = #BA9FB4
 #color5  = #ffa193
-color13  = #b4a3ac
+color13 = #BA9FB4
 
 # cyan
-color6  = #9db9cb
-color14 = #9db9cb
+color6  = #b9cad4
+color14 = #b9cad4
 
 # white
 #color7  = #707880

@@ -111,6 +111,7 @@ set relativenumber
 "Nerdtree settings
 map <Leader>n <plug>NERDTreeTabsToggle<CR>
 let g:NERDTreeWinPos = "right"
+let g:NERDTreeWinSize = 22
 
 "Split navigations
 nnoremap <C-J> <C-W><C-J>
@@ -130,13 +131,19 @@ set shiftwidth=4
 :imap jk <Esc>
 
 let g:netrw_banner = 0
-let g:netrw_liststyle = 3
+let g:netrw_liststyle = 4
 let g:netrw_browse_split = 4
 let g:netrw_altv = 1
 let g:netrw_winsize = 25
 augroup ProjectDrawer
 	autocmd!
 augroup END
+nnoremap <Leader>a :Vexplore<CR>
+
+" set cursor shapes by mode
+let &t_SI = "\<Esc>[6 q"
+let &t_SR = "\<Esc>[4 q"
+let &t_EI = "\<Esc>[2 q"
 
 "Python settings
 au BufNewFile,BufRead *.py set tabstop=4
@@ -162,4 +169,5 @@ au BufNewFile,BufRead *.hs set shiftround                  "Round indent to near
 " let g:ghc="/usr/bin/ghc-6.6.1"
 " au BufEnter *.hs compiler ghc
 " let g:haddock_browser="/usr/bin/firefox"
+"
 "

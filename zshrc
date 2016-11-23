@@ -63,7 +63,7 @@ function __git_prompt {
 
 # Left prompt
 GIT='$(__git_prompt)'
-PROMPT="%{$fg_no_bold[yellow]%}%n%{$reset_color%}@%{$fg_no_bold[purple]%}%m %{$fg_bold[blue]%}%1~$GIT %{$reset_color%}%# "
+PROMPT="%{$fg_no_bold[magenta]%}%n%{$reset_color%}@%{$fg_no_bold[purple]%}%m %{$fg_bold[blue]%}%1~$GIT %{$reset_color%}%# "
 #if [[ -z "$SSH_CLIENT" ]]; then
 #else
 	#PROMPT="%{$fg_no_bold[yellow]%}%n%  %{$fg_bold[blue]%}%1~$GIT %{$reset_color%}%# "

@@ -17,7 +17,7 @@ Windowtitle() {
 }
 
 Clock() {
-		echo "Clock "$(~/.config/lemonbar/blocks/time)
+	echo "Clock $(~/.config/lemonbar/blocks/calendar) $(~/.config/lemonbar/blocks/time)"
 }
 
 Battery() {
@@ -29,25 +29,17 @@ Brightness() {
 Volume() {
 		echo "Volume "$(~/.config/lemonbar/blocks/volume)
 }
-
-
-Workspaces() {
-		WORKSPACES="$(i3-msg -t get_workspaces)"
-		echo "Workspaces "$(~/.config/lemonbar/workspaces.py $WORKSPACES)
-}
 Network() {
 		echo "Network "$(~/.config/lemonbar/blocks/network)
 }
 
-
-while :; do Workspaces; sleep 30s; done > "$fifo" &
-while :; do Volume; sleep 1s; done > "$fifo" &
+WORKSPACES="$(i3-msg -t get_workspaces)"
+echo "Workspaces "$(~/.config/lemonbar/workspaces.py $WORKSPACES) > "$fifo" &
+while :; do Volume; sleep 30s; done > "$fifo" &
 while :; do Clock; sleep 60s; done > "$fifo" &
 while :; do Brightness; sleep 3s; done > "$fifo" &
 while :; do Battery; sleep 30s; done > "$fifo" &
 while :; do Network; sleep 10s; done > "$fifo" &
-while :; do Windowtitle; sleep 5s; done > "$fifo" &
-
 
 while read -r line ; do
     case $line in
@@ -72,7 +64,14 @@ while read -r line ; do
         Windowtitle*)
             wt="${line:11}"
             ;;
+		Resize*)
+			rs="%{F#da866d}%{B#2e343c} Resize mode! %{B-}%{F-}"
+			;;
+		EndResize*)
+			rs=""
+			;;
     esac
-	echo " %{l}%{F#FFFFFF}$nt$bn%{c}$ws%{F-}%{B-}%{r}%{f#ffffff}$bt $vl$cl %{F-}%{B-}"
+	echo "%{l} %{F#FFFFFF}$nt  $vl  %{T4}$rs%{T-}%{c}%{F#FFFFFF}$ws%{F-}%{B-}%{r}%{F#FFFFFF}$bt $bn $cl %{F-}%{B-}"
 done < "$fifo" | lemonbar -f "Hack:size=10" -o 0 -f "FontAwesome:size=10" \
-	-o -1 -f "Material Icons:size=10" -B "#2E343c" -g 1920x20+0+0 | bash; exit
+	-o -1 -f "Material Icons:size=11" -o -0 -f "Hack:Bold:size=10.25" -B "#2E343c" -g 1920x20+0+0 -u 0 -U "#2E343c"
+    
