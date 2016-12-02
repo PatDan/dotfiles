@@ -10,7 +10,11 @@ def write_fifo(msg):
     fifo.close()
 
 def on_mode_event(i3, e):
-    write_fifo("MODE\t{:s}".format(e.change))
+    if(format(e.change) == '$resize'):
+        write_fifo("ResizeMode")
+    elif(format(e.change) == 'default'):
+        write_fifo("DefaultMode")
+
 
 def update_workspaces(i3):
     out = {'mainbar': "Workspaces "}
@@ -21,10 +25,10 @@ def update_workspaces(i3):
     i = 0
     for wp in i3.get_workspaces():
         for x in range(0, wp.num-i-1):
-            out['mainbar'] += ("%{F#888888}%{F#FFFFFF} ")
+            out['mainbar'] += ("%{F#66707C}%{F#FFFFFF} ")
         i = wp.num
         if(wp.urgent == 1 ):
-            out['mainbar'] += "%{F#da866d}%{F#FFFFFF} "
+            out['mainbar'] += "%{F" + redcol + "}%{F#FFFFFF} "
             continue
         if(wp.visible == 1 ):
             out['mainbar'] += " "
@@ -44,6 +48,15 @@ def on_workspace_urgent(i3, e):
     update_workspaces(i3)
 
 time.sleep(1)
+termiteconfig = open('/home/patrik/.config/termite/config', 'r')
+info = termiteconfig.read()
+
+for s in info.splitlines():
+    if "color9" in s:
+        words = s.split()
+        redcol = words[2]
+
+termiteconfig.close()
 i3 = i3ipc.Connection()
 i3.on('mode', on_mode_event)
 i3.on('workspace::focus', on_workspace_focus)

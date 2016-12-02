@@ -8,11 +8,11 @@ set rtp+=/usr/lib/python3.5/site-packages/powerline/bindings/vim/
 
 " Pathogen
 execute pathogen#infect()
+
 " Always show statusline
 set laststatus=2
 
-" Use 256 colours (Use this setting only if your terminal supports 256
-" colours)
+" Use 256 colours
 set t_Co=256
 
 " Autoreload .vimrc
@@ -39,10 +39,13 @@ inoremap <A-k> <Esc>:m .-2<CR>==gi
 vnoremap <A-j> :m '>+1<CR>gv=gv
 vnoremap <A-k> :m '<-2<CR>gv=gv
 
-" Save and/or exit"
+" Save and/or exit
 map <Leader>w :w<CR>
 map <Leader>x :x!<CR>
 map <Leader>q :q!<CR>
+
+" Save in sudo
+map <Leader>W :w !sudo tee > /dev/null %<CR>
 
 " Copy paste
 " set clipboard=unnamed
@@ -77,8 +80,8 @@ set viminfo='1000,f1
 set exrc
 set secure
 let &path.="src/include,/usr/include/AL,"
-nnoremap <Leader>c :make!<cr>
 nnoremap <Leader>e :silent !clear<cr> <bar> :!./%<<cr>
+nnoremap <Leader>c :make!<cr>
 nnoremap <Leader>C :!./%<<cr>
 
 " Autoclose function documentation in autocomplete
@@ -90,7 +93,6 @@ set colorcolumn=81
 
 " Color settings
 set background=dark
-" highlight ColorColumn ctermbg=22
 highlight ColorColumn ctermbg=236
 highlight linenr ctermfg=244
 highlight CursorLineNr ctermfg=244
@@ -122,7 +124,7 @@ nnoremap <C-H> <C-W><C-H>
 "Make textblocks
 set foldmethod=marker
 
-"General settings
+"General file settings
 set tabstop=4
 set softtabstop=4
 set shiftwidth=4
@@ -159,15 +161,3 @@ au BufNewFile,BufRead *.c set tabstop=8
 au BufNewFile,BufRead *.c set softtabstop=8
 au BufNewFile,BufRead *.c set shiftwidth=8
 au BufNewFile,BufRead *.c set noexpandtab
-
-"Haskell settings
-au BufNewFile,BufRead *.hs set tabstop=8                   "A tab is 8 spaces
-au BufNewFile,BufRead *.hs set expandtab                   "Always uses spaces instead of tabs
-au BufNewFile,BufRead *.hs set softtabstop=4               "Insert 4 spaces when tab is pressed
-au BufNewFile,BufRead *.hs set shiftwidth=4                "An indent is 4 spaces
-au BufNewFile,BufRead *.hs set shiftround                  "Round indent to nearest shiftwidth multiple
-" let g:ghc="/usr/bin/ghc-6.6.1"
-" au BufEnter *.hs compiler ghc
-" let g:haddock_browser="/usr/bin/firefox"
-"
-"
