@@ -28,6 +28,7 @@ client.unfocused        #2E343c #2E343c #cccccc #2E343c
 client.urgent           #2E343c #2E343c #ffffff #2E343c
 # use Mouse+Mod1 to drag floating windows to their wanted position
 floating_modifier Mod4
+for_window [class="feh"] floating enable
 
 # start a terminal
 bindsym Mod4+Return exec --no-startup-id termite
