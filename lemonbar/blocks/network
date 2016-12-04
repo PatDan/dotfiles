@@ -15,6 +15,11 @@ for INTERFACE in $(ls /sys/class/net/); do
 			text=" $text |   wired $ipaddr"
 		fi
     fi
+	if [ "$INTERFACE" = "bnep0" ]; then
+		if [ "$(ls -A /sys/class/net/$INTERFACE)" ]; then
+			text=" Bluetooth network"
+		fi
+	fi
 done
 
 if [ -n "$text" ]; then

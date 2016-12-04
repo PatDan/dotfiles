@@ -33,7 +33,13 @@ Network() {
 		echo "Network "$(~/.config/lemonbar/blocks/network)
 }
 Spotify() {
-		echo "Spotify "$(python ~/.config/lemonbar/blocks/spotify.py)
+		if [ $(pgrep -cx spotify) -gt 0 ] ; then
+			status=$(playerctl status)
+			echo "Spotify"$(python ~/.config/lemonbar/blocks/music.py $status)
+        else
+			echo "Spotify"
+        fi
+
 }
 
 WORKSPACES="$(i3-msg -t get_workspaces)"
@@ -43,7 +49,7 @@ while :; do Clock; sleep 60s; done > "$fifo" &
 while :; do Brightness; sleep 3s; done > "$fifo" &
 while :; do Battery; sleep 30s; done > "$fifo" &
 while :; do Network; sleep 10s; done > "$fifo" &
-while :; do Spotify; sleep 2s; done > "$fifo" &
+while :; do Spotify; sleep 5s; done > "$fifo" &
 
 /home/patrik/.config/lemonbar/events.py &
 
@@ -80,8 +86,8 @@ while read -r line ; do
             sp="${line:7}"
 			;;
     esac
-	#echo "%{l} %{F#FFFFFF}$nt  $vl  $sp  $rs%{c}%{F#FFFFFF}$ws%{F-}%{B-}%{r}%{F#FFFFFF}$bt $bn %{A0:/home/patrik/.config/lemonbar/calendar.sh &:}$cl %{A}%{F-}%{B-}"
+	#echo "%{l} %{F#FFFFFF}$nt  $sp  $vl  $rs%{c}%{F#FFFFFF}$ws%{F-}%{B-}%{r}%{F#FFFFFF}$bt $bn %{A0:/home/patrik/.config/lemonbar/calendar.sh &:}$cl %{A}%{F-}%{B-}"
 	echo "%{l} %{F#FFFFFF}$nt  $vl%{F#FFFFFF}  $sp  $rs%{c}%{F#FFFFFF}$ws%{F-}%{B-}%{r}%{F#FFFFFF}$bt $bn %{A:gsimplecal &:}$cl %{A}%{F-}%{B-}"
 done < "$fifo" | lemonbar -f "Hack:size=10" -o 0 -f "FontAwesome:size=10" \
-	-o -1 -f "Material Icons:size=11" -o -0 -f "Hack:Bold:size=10" -f "Droid Sans Mono Dotted for Powerline:size=10" -B "#2E343c" -g 1920x20+0+0 -u 0 -U "#2E343c" | sh
+	-o -1 -f "Material Icons:size=11" -o -0 -f "Hack:Bold:size=10" -o 0 -f "Material Icons:size=13" -o 1 -B "#2E343c" -g 1920x20+0+0 -u 0 -U "#2E343c" | sh
     
