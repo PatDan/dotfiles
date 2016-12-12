@@ -81,11 +81,14 @@ nnoremap <Leader>C :!./%<<cr>
 
 " Visible line for line length
 set colorcolumn=81
-highlight ColorColumn ctermbg=22
+highlight ColorColumn ctermbg=234
 
 " Autoclose function documentation in autocomplete
 autocmd CursorMovedI * if pumvisible() == 0|pclose|endif
 autocmd InsertLeave * if pumvisible() == 0|pclose|endif
+
+" Make textblocks
+set foldmethod=marker
 
 set background=dark
 
