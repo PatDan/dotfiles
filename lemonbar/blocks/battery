@@ -47,6 +47,7 @@ then
     esac
 
     # Full text
+	#echo "$baticon $capacity%"
 	echo "$baticon $capacity% $remaining"
     # Short text
     #echo "Ψ $capacity% $symbol"

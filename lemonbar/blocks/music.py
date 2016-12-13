@@ -25,6 +25,6 @@ try:
     # To just print the title
         artist = str(metadata['xesam:artist'][0])
         title = str(metadata['xesam:title'])
-        print(out+"%{T1}"+mustext+"%{T-} "+title + " - " + artist )
+        print(out+title + " - " + artist )
 except dbus.exceptions.DBusException:
     print()

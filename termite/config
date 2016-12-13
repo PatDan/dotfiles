@@ -12,43 +12,30 @@ foreground_bold = #DDDDDD
 
 # 16 color space
 
-
-
-# black
-color0  = #282a2e
-color8  = #373b41
-
-# red
-color1  = #aa9ea3
-color9  = #aa9ea3
-
-# green
-color2  = #568897
-color10 = #568897
-
-# yellow
-color3  = #d2d6c4
-color11 = #d2d6c4
-
-# blue
-color4  = #627192
-color12 = #627192
-#color12 = #75a2c1
-
-# magenta
-color5  = #79738a
-#color5  = #717d9d
-color13  = #79738a
-
-# cyan
-color6  = #9ab6c6
-color14 = #9ab6c6
-
-# white
-#color7  = #707880
-color7  = #ffffff
-#color15 = #c5c8c6
-color15 = #ffffff
+#dark blue
+color0  = #1C2023
+color8  = #747C84
+#red
+color1  = #f6887a
+color9 = #CE7266
+#aquamarine
+color2  = #84cdc9
+color10  = #6CA7A4
+#light brown
+color3  = #b0aca9
+color11  = #8B8886
+#green
+color4  = #729597
+color12  = #5D7A7C
+#brown
+color5  = #908a8a
+color13 = #797474
+#ice blue
+color6  = #aac3c8
+color14 = #8A9FA3
+#grey ice blue
+color7  = #FFFFFF
+color15 = #DEDEDE
  
 # 256 color space
 color16 = #C7C795

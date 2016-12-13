@@ -25,7 +25,8 @@ def update_workspaces(i3):
     i = 0
     for wp in i3.get_workspaces():
         for x in range(0, wp.num-i-1):
-            out['mainbar'] += ("%{F#66707C}%{F#FFFFFF} ")
+            """out['mainbar'] += ("%{F#66707C}%{F#FFFFFF} ")"""
+            out['mainbar'] += ("%{F#717C89}%{F#FFFFFF} ")
         i = wp.num
         if(wp.urgent == 1 ):
             out['mainbar'] += "%{F" + redcol + "}%{F#FFFFFF} "
