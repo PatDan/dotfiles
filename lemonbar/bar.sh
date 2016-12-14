@@ -25,9 +25,6 @@ Battery() {
 
 		#echo 'Battery  96%' && sleep 1 && echo 'Battery  96%' && sleep 1 && echo 'Battery  96%' && sleep 1 && echo 'Battery  96%' && sleep 1 && echo 'Battery  96%' && sleep 1 &
 }
-Brightness() {
-		echo "Brightness "$(~/.config/lemonbar/blocks/brightness)
-}
 Volume() {
 		echo "Volume "$(~/.config/lemonbar/blocks/volume)
 }
@@ -44,16 +41,16 @@ Spotify() {
 
 }
 
-WORKSPACES="$(i3-msg -t get_workspaces)"
-echo "Workspaces "$(~/.config/lemonbar/workspaces.py $WORKSPACES) > "$fifo" &
 while :; do Volume; sleep 30s; done > "$fifo" &
 while :; do Clock; sleep 60s; done > "$fifo" &
-while :; do Brightness; sleep 3s; done > "$fifo" &
 while :; do Battery; sleep 6s; done > "$fifo" &
 while :; do Network; sleep 10s; done > "$fifo" &
 while :; do Spotify; sleep 5s; done > "$fifo" &
 
 /home/patrik/.config/lemonbar/events.py &
+
+
+#testinfo="%{B#4D5764}%{T4}%{+u}%{U#DDDDDD}%{O#2E343c}  %{-u}%{T-}%{B-}%{B#2E343c}%{F#717C89}%{+u}%{U#717C89}%{O#2E343c}  %{-u}%{T-}%{B-}%{F-}"
 
 while read -r line ; do
     case $line in
@@ -88,8 +85,7 @@ while read -r line ; do
             sp="${line:7}"
 			;;
     esac
-	#echo "%{l} %{F#FFFFFF}$sp  $vl  $rs%{c}%{F#FFFFFF}$ws%{F-}%{B-}%{r}%{F#FFFFFF}$nt  $bt $bn %{A0:/home/patrik/.config/lemonbar/calendar.sh &:}$cl %{A}%{F-}%{B-}"
-	echo "%{l} %{F#FFFFFF}$nt  $vl%{F#FFFFFF}  $sp  $rs%{c}%{F#FFFFFF}$ws%{F-}%{B-}%{r}%{F#FFFFFF}$bn $bt %{A:gsimplecal &:}$cl %{A}%{F-}%{B-}"
-done < "$fifo" | lemonbar -f "Hack:size=10" -o 0 -f "FontAwesome:size=10" \
-	-o -1 -f "Material Icons:size=11" -o -0 -f "Hack:Bold:size=10" -o 0 -f "Material Icons:size=13" -o 1 -B "#2E343c" -g 1920x20+0+0 -u 0 -U "#2E343c" | sh
+	echo "%{l} %{F#FFFFFF}$nt $testinfo $vl%{F#FFFFFF}  $sp  $rs%{c}%{F#FFFFFF}$ws%{F-}%{B-}%{r}%{F#FFFFFF}$bn $bt %{A:gsimplecal &:}$cl %{A}%{F-}%{B-}"
+done < "$fifo" | lemonbar -f "Hack:size=10" -o -2 -f "FontAwesome:size=10" \
+	-o -3 -f "Material Icons:size=11" -o -2 -f "Hack:Bold:size=10" -o -2 -f "Material Icons:size=15" -o -1 -B "#2E343c" -g 1920x20+0+0 -u 0 -U "#2E343c" | sh
     

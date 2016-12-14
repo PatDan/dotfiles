@@ -5,11 +5,12 @@ try:
     session_bus = dbus.SessionBus()
     if len(l) > 1:
         if str(l[1]) == "Paused":
-            musicon=""
+            musicon=""
             mustext="Now playing:"
         else:
             musicon=""
             mustext="Now playing:"
+        out="%{A:/home/patrik/.config/lemonbar/previous.sh:}%{A}%{A:/home/patrik/.config/lemonbar/playpause.sh:}%{T5}"+musicon+"%{T-}%{A}%{A:/home/patrik/.config/lemonbar/next.sh:}%{}%{A} "
         out="%{A:/home/patrik/.config/lemonbar/previous.sh:}%{A}%{A:/home/patrik/.config/lemonbar/playpause.sh:}%{T5}"+musicon+"%{T-}%{A}%{A:/home/patrik/.config/lemonbar/next.sh:}%{}%{A} "
         spotify_bus = session_bus.get_object("org.mpris.MediaPlayer2.spotify",
                                             "/org/mpris/MediaPlayer2")

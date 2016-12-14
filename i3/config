@@ -239,8 +239,9 @@ bindsym XF86AudioLowerVolume exec --no-startup-id amixer sset Master 8%- && /hom
 bindsym XF86AudioMute exec --no-startup-id pactl set-sink-mute 0 toggle && /home/patrik/.config/lemonbar/volume.sh
 
 # Screen brightness controls
-bindsym XF86MonBrightnessUp exec --no-startup-id light -A 8
-bindsym XF86MonBrightnessDown exec --no-startup-id light -U 8
+bindsym XF86MonBrightnessUp exec --no-startup-id light -A 8 && /home/patrik/.config/lemonbar/brightness.sh
+bindsym XF86MonBrightnessDown exec --no-startup-id light -U 8 && /home/patrik/.config/lemonbar/brightness.sh
+
 
 # Media player controls
 bindsym XF86AudioPlay exec --no-startup-id playerctl play
