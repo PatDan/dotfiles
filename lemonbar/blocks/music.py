@@ -10,8 +10,7 @@ try:
         else:
             musicon=""
             mustext="Now playing:"
-        out="%{A:/home/patrik/.config/lemonbar/previous.sh:}%{A}%{A:/home/patrik/.config/lemonbar/playpause.sh:}%{T5}"+musicon+"%{T-}%{A}%{A:/home/patrik/.config/lemonbar/next.sh:}%{}%{A} "
-        out="%{A:/home/patrik/.config/lemonbar/previous.sh:}%{A}%{A:/home/patrik/.config/lemonbar/playpause.sh:}%{T5}"+musicon+"%{T-}%{A}%{A:/home/patrik/.config/lemonbar/next.sh:}%{}%{A} "
+        out="%{A:/home/patrik/.config/lemonbar/music.sh previous:}%{A}%{A:/home/patrik/.config/lemonbar/music.sh playpause:}%{T5}"+musicon+"%{T-}%{A}%{A:/home/patrik/.config/lemonbar/music.sh next:}%{}%{A} "
         spotify_bus = session_bus.get_object("org.mpris.MediaPlayer2.spotify",
                                             "/org/mpris/MediaPlayer2")
         spotify_properties = dbus.Interface(spotify_bus,
