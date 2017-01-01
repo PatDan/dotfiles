@@ -5,7 +5,7 @@ try:
     session_bus = dbus.SessionBus()
     if len(l) > 1:
         if str(l[1]) == "Paused":
-            musicon=""
+            musicon=""
             mustext="Now playing:"
         else:
             musicon=""

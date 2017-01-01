@@ -87,5 +87,5 @@ while read -r line ; do
     esac
 	echo "%{l} %{F#FFFFFF}$nt $testinfo $vl%{F#FFFFFF}  $sp  $rs%{c}%{F#FFFFFF}$ws%{F-}%{B-}%{r}%{F#FFFFFF}$bn $bt %{A:gsimplecal &:}$cl %{A}%{F-}%{B-}"
 done < "$fifo" | lemonbar -f "Hack:size=10" -o -2 -f "FontAwesome:size=10" \
-	-o -3 -f "Material Icons:size=11" -o -2 -f "Hack:Bold:size=10" -o -2 -f "Material Icons:size=15" -o -1 -B "#2E343c" -g 1920x20+0+0 -u 0 -U "#2E343c" | sh
+	-o -3 -f "Material Icons:size=11" -o -2 -f "Hack:Bold:size=10" -o -2 -f "Material Icons:size=13" -o -1 -B "#2E343c" -g 1920+0+0 -u 0 -U "#2E343c" | sh
     

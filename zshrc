@@ -26,8 +26,8 @@ HISTFILE=~/.cache/zsh_history
 
 # Git prompt
 setopt prompt_subst
-autoload colors zsh/terminfo
-colors
+#autoload colors zsh/terminfo
+#colors
 function __git_prompt {
   local DIRTY="%{$fg[red]%}"
   local CLEAN="%{$fg[green]%}"
@@ -57,12 +57,12 @@ function __git_prompt {
     fi
     echo -n `git branch | grep '* ' | sed 's/..//'`
 	echo -n "]"
-	#echo -n $RESET
+#	#echo -n $RESET
   fi
 }
 
 # Left prompt
-GIT='$(__git_prompt)'
+#GIT='$(__git_prompt)'
 PROMPT="%{$fg_no_bold[magenta]%}%n%{$reset_color%}@%{$fg_no_bold[purple]%}%m %{$fg_bold[blue]%}%1~$GIT %{$reset_color%}%# "
 #if [[ -z "$SSH_CLIENT" ]]; then
 #else
