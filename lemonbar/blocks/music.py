@@ -25,6 +25,9 @@ try:
     # To just print the title
         artist = str(metadata['xesam:artist'][0])
         title = str(metadata['xesam:title'])
+        length = len(artist)+len(title)
+        if length > 50:
+            title = title[:50-len(artist)] + "..."
         print(out+title + " - " + artist )
 except dbus.exceptions.DBusException:
     print()

@@ -104,6 +104,10 @@ nnoremap <Leader>e :silent !clear<cr> <bar> :!./%<<cr>
 nnoremap <Leader>c :make!<cr>
 nnoremap <Leader>C :!./%<<cr>
 
+" C++ settings
+nnoremap <Leader>g :make!<cr>
+nnoremap <Leader>G :!./%<<cr>
+
 " Autoclose function documentation in autocomplete
 autocmd CursorMovedI * if pumvisible() == 0|pclose|endif
 autocmd InsertLeave * if pumvisible() == 0|pclose|endif

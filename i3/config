@@ -214,7 +214,10 @@ bindsym Mod4+r mode $resize
 
 bar {
     i3bar_command /home/patrik/.config/lemonbar/bar.sh
+    #i3bar_command xfce4-panel
 }
+
+#exec xfce4-panel --disable-wm-check
 
 # Gaps
 smart_gaps on
@@ -254,3 +257,4 @@ bindsym XF86AudioPrev exec --no-startup-id playerctl previous
 exec --no-startup-id /etc/profile.d/vte.sh
 exec --no-startup-id $HOME/.i3/custom_dmenu_run.sh
 exec --no-startup-id /home/patrik/Scripts/Startup/startup.py
+

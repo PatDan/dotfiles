@@ -10,8 +10,8 @@ for INTERFACE in $(ls /sys/class/net/); do
 		iwid="$(iwgetid -r)"
 
 		if [ "$INTERFACE" = "wlp4s0" ]; then
-			#text=" $text |  $iwid"
-			text=" $text |  $iwid $ipaddr"
+			text=" $text |  $iwid"
+			#text=" $text |  $iwid $ipaddr"
 		else
 			text=" $text |   wired $ipaddr"
 			#text=" $text |   wired"

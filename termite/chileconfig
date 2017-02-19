@@ -5,7 +5,7 @@ font =  Droid Sans Mono Dotted for Powerline 11
 # Base16 Ashes
 # Scheme: Jannik Siebert (https://github.com/janniks)
 
-background = rgba(39, 44, 51, 0.97)
+background = rgba(39, 44, 51, 1)
 foreground      = #DDDDDD
 foreground_bold = #DDDDDD
 #cursor          = #DDDDDD

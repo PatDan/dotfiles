@@ -27,15 +27,18 @@ def update_workspaces(i3):
         for x in range(0, wp.num-i-1):
             """out['mainbar'] += ("%{F#66707C}%{F#FFFFFF} ")"""
             out['mainbar'] += ("%{F#717C89}%{F#FFFFFF} ")
+            #out['mainbar'] += " "
             #out['mainbar'] += ("%{B#2E343c}%{T4}%{F#2E343c}%{+u +o}%{U#2E343c}%{O#2E343c}  %{-u -o}%{T-}%{B-}%{F-}")
         i = wp.num
         if(wp.urgent == 1 ):
+            #out['mainbar'] += " "
             out['mainbar'] += "%{F" + redcol + "}%{F#FFFFFF} "
             continue
         if(wp.visible == 1 ):
             out['mainbar'] += " "
             #out['mainbar'] += ("%{T4}%{B#4A5561}%{F#FFFFFF}%{T4}%{+u +o}%{U#2E343c}%{O#2E343c}  %{-u -o}%{T-}%{B-}%{F-}")
             continue
+        #out['mainbar'] += " "
         out['mainbar'] += " "
         #out['mainbar'] += ("%{T4}%{+u}%{B#2E343c}%{F#FFFFFF}%{+u +o}%{U#2E343c}%{O#2E343c}  %{-u -o}%{T-}%{B-}%{F-}")
 

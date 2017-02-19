@@ -58,7 +58,7 @@ while read -r line ; do
             ws="${line:11}"
             ;;
         Volume*)
-            vl="${line:7}"
+            vl="%{T4}${line:7}%{T-}"
             ;;
         Clock*)
             cl="${line:5}"
@@ -85,7 +85,7 @@ while read -r line ; do
             sp="${line:7}"
 			;;
     esac
-	echo "%{l} %{F#FFFFFF}$nt $testinfo $vl%{F#FFFFFF}  $sp  $rs%{c}%{F#FFFFFF}$ws%{F-}%{B-}%{r}%{F#FFFFFF}$bn $bt %{A:gsimplecal &:}$cl %{A}%{F-}%{B-}"
+	echo "%{l} %{F#FFFFFF}$nt $testinfo $vl%{F#FFFFFF}  $sp  $rs%{c}%{F#FFFFFF}%{T4}$ws%{T-}%{F-}%{B-}%{r}%{F#FFFFFF}$bn $bt %{A:gsimplecal &:}$cl %{A}%{F-}%{B-}"
 done < "$fifo" | lemonbar -f "Hack:size=10" -o -2 -f "FontAwesome:size=10" \
-	-o -3 -f "Material Icons:size=11" -o -2 -f "Hack:Bold:size=10" -o -2 -f "Material Icons:size=13" -o -1 -B "#2E343c" -g 1920+0+0 -u 0 -U "#2E343c" | sh
+	-o -3 -f "Material Design Icons:size=11" -o -2 -f "Hack:size=10" -o -2 -f "Material Icons:size=13" -o -1 -u 2 -U "#FFFFFF" -B "#2E343c" -g 1920x20+0+0 | sh
     

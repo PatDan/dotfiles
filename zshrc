@@ -4,6 +4,10 @@ compinit
 zstyle ':completion:*' menu select
 setopt completeinword
 zstyle ':completion:*' matcher-list 'm:{a-zA-Z}={A-Za-z}'
+#zstyle ':completion:*' matcher-list '' \
+#  'm:{a-z\-}={A-Z\_}' \
+#  'r:[^[:alpha:]]||[[:alpha:]]=** r:|=* m:{a-z\-}={A-Z\_}' \
+#  'r:|?=** m:{a-z\-}={A-Z\_}'
 
 # Colors and prompt
 autoload -Uz colors && colors
@@ -18,10 +22,16 @@ fi
 
 # Editor
 export EDITOR=vim
+export BROWSER=chromium
+# export BROWSER=chromium
 
 # History
-setopt APPEND_HISTORY
-SAVEHIST=100
+#
+setopt inc_append_history
+setopt share_history
+#setopt APPEND_HISTORY
+SAVEHIST=10000
+HISTSILZE=10000
 HISTFILE=~/.cache/zsh_history
 
 # Git prompt
@@ -62,12 +72,16 @@ function __git_prompt {
 }
 
 # Left prompt
-#GIT='$(__git_prompt)'
-PROMPT="%{$fg_no_bold[magenta]%}%n%{$reset_color%}@%{$fg_no_bold[purple]%}%m %{$fg_bold[blue]%}%1~$GIT %{$reset_color%}%# "
-#if [[ -z "$SSH_CLIENT" ]]; then
-#else
-	#PROMPT="%{$fg_no_bold[yellow]%}%n%  %{$fg_bold[blue]%}%1~$GIT %{$reset_color%}%# "
-#fi
+GIT='$(__git_prompt)'
+if [[ -z "$SSH_CLIENT" ]]; then
+        prompt_host=""
+else
+		prompt_host=%{$fg_no_bold[magenta]%}%n%{$reset_color%}@%{$fg_no_bold[purple]%}%m
+fi
 
+PROMPT="$prompt_host %{$fg_bold[blue]%}%~$GIT %{$fg_no_bold[white]%}%# %{$reset_color%}"
+#PROMPT="$prompt_host %{$fg_bold[blue]%}%~$GIT %{$fg_no_bold[white]%} %{$reset_color%}"
 
 zstyle ':completion:*' list-colors "${(@s.:.)LS_COLORS}"
+
+alias grep='grep --color=auto'
