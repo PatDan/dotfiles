@@ -1,0 +1,183 @@
+set nocompatible              " required
+filetype off                  " required
+filetype plugin indent on
+syntax on
+
+" Powerline
+set rtp+=/usr/lib/python3.5/site-packages/powerline/bindings/vim/
+
+" Pathogen
+execute pathogen#infect()
+
+" Always show statusline
+" set laststatus=2
+set laststatus=2
+
+let s:hidden_all = 0
+function! ToggleHiddenAll()
+    if s:hidden_all  == 0
+        let s:hidden_all = 1
+        set noshowmode
+        set noruler
+        set laststatus=0
+        set noshowcmd
+    else
+        let s:hidden_all = 0
+        set showmode
+        set ruler
+        set laststatus=2
+        set showcmd
+    endif
+endfunction
+
+nnoremap <S-h> :call ToggleHiddenAll()<CR>
+
+" Use 256 colours
+set t_Co=256
+
+" Autoreload .vimrc
+autocmd! bufwritepost .vimrc source %
+
+" Mapleader
+let mapleader ="\<Space>"
+
+" Move lines
+let c='a'
+while c <= 'z'
+  exec "set <A-".c.">=\e".c
+  exec "imap \e".c." <A-".c.">"
+  let c = nr2char(1+char2nr(c))
+  0
+endw
+
+set timeout ttimeoutlen=50
+
+nnoremap <A-j> :m .+1<CR>==
+nnoremap <A-k> :m .-2<CR>==
+inoremap <A-j> <Esc>:m .+1<CR>==gi
+inoremap <A-k> <Esc>:m .-2<CR>==gi
+vnoremap <A-j> :m '>+1<CR>gv=gv
+vnoremap <A-k> :m '<-2<CR>gv=gv
+
+" Save and/or exit
+map <Leader>w :w<CR>
+map <Leader>x :x!<CR>
+map <Leader>q :q!<CR>
+
+" Save in sudo
+map <Leader>W :w !sudo tee > /dev/null %<CR>
+
+" Copy paste
+" set clipboard=unnamed
+vmap <C-c> "+y
+vmap <C-x> "+c
+vmap <C-v> c<ESC>"+p
+imap <C-v> <ESC>"+pa
+
+" Delete will delete, leader delete will cut
+nnoremap x "_x
+nnoremap d "_d
+nnoremap D "_D
+vnoremap d "_d
+
+nnoremap <leader>d ""d
+nnoremap <leader>D ""D
+vnoremap <leader>d ""d
+
+" Mouse 
+set mouse=a
+
+" Showing line numbers and length
+set number
+set tw=79
+set nowrap
+set fo-=t
+
+"Save marks between sessions
+set viminfo='1000,f1
+
+" C settings
+set exrc
+set secure
+let &path.="src/include,/usr/include/AL,"
+nnoremap <Leader>e :silent !clear<cr> <bar> :!./%<<cr>
+nnoremap <Leader>c :make!<cr>
+nnoremap <Leader>C :!./%<<cr>
+
+" Autoclose function documentation in autocomplete
+autocmd CursorMovedI * if pumvisible() == 0|pclose|endif
+autocmd InsertLeave * if pumvisible() == 0|pclose|endif
+
+" Visible line for line length
+set colorcolumn=81
+
+" Color settings
+set background=dark
+highlight ColorColumn ctermbg=236
+highlight linenr ctermfg=244
+highlight CursorLineNr ctermfg=244
+highlight NonText ctermfg=234
+highlight PreProc ctermfg=3
+highlight Special ctermfg=4
+highlight Type ctermfg=2
+highlight VertSplit ctermfg=238
+highlight VertSplit ctermbg=238
+highlight StatusLineNC ctermfg=240
+highlight Directory ctermfg=6
+highlight Title ctermfg=15
+highlight Statement ctermfg=1
+highlight MoreMsg ctermfg=2
+highlight Question ctermfg=2
+set relativenumber
+
+"Nerdtree settings
+map <Leader>n <plug>NERDTreeTabsToggle<CR>
+let g:NERDTreeWinPos = "right"
+let g:NERDTreeWinSize = 22
+
+"Split navigations
+nnoremap <C-J> <C-W><C-J>
+nnoremap <C-K> <C-W><C-K>
+nnoremap <C-L> <C-W><C-L>
+nnoremap <C-H> <C-W><C-H>
+
+"Make textblocks
+set foldmethod=marker
+
+"General file settings
+set tabstop=4
+set softtabstop=4
+set shiftwidth=4
+
+"Dont use escape!
+:imap jk <Esc>
+
+let g:netrw_banner = 0
+let g:netrw_liststyle = 4
+let g:netrw_browse_split = 4
+let g:netrw_altv = 1
+let g:netrw_winsize = 25
+augroup ProjectDrawer
+	autocmd!
+augroup END
+nnoremap <Leader>a :Vexplore<CR>
+
+" set cursor shapes by mode
+let &t_SI = "\<Esc>[6 q"
+let &t_SR = "\<Esc>[4 q"
+let &t_EI = "\<Esc>[2 q"
+
+"Python settings
+au BufNewFile,BufRead *.py set tabstop=4
+au BufNewFile,BufRead *.py set softtabstop=4
+au BufNewFile,BufRead *.py set shiftwidth=4
+au BufNewFile,BufRead *.py set textwidth=79
+au BufNewFile,BufRead *.py set expandtab
+au BufNewFile,BufRead *.py set autoindent
+au BufNewFile,BufRead *.py set fileformat=unix	
+
+"C settings
+au BufNewFile,BufRead *.c set tabstop=8
+au BufNewFile,BufRead *.c set softtabstop=8
+au BufNewFile,BufRead *.c set shiftwidth=8
+au BufNewFile,BufRead *.c set noexpandtab
