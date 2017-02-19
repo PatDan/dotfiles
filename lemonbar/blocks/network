@@ -1,0 +1,33 @@
+#!/bin/sh
+
+text=''
+
+for INTERFACE in $(ls /sys/class/net/); do
+    state="$(cat /sys/class/net/$INTERFACE/operstate)"
+    if [ "$state" = "up" ]; then
+        ipaddr="$(ip addr show $INTERFACE | perl -n -e'/inet (.+)\// && print $1')"
+        ipaddr="${ipaddr:- -}"
+		iwid="$(iwgetid -r)"
+
+		if [ "$INTERFACE" = "wlp4s0" ]; then
+			#text=" $text |  $iwid"
+			text=" $text |  $iwid $ipaddr"
+		else
+			text=" $text |   wired $ipaddr"
+			#text=" $text |   wired"
+		fi
+    fi
+	if [ "$INTERFACE" = "bnep0" ]; then
+		if [ "$(ls -A /sys/class/net/$INTERFACE)" ]; then
+			text=" Bluetooth network"
+		fi
+	fi
+done
+
+if [ -n "$text" ]; then
+    text=$(echo $text | sed "s/^| //")
+    echo $text
+else
+    #echo ' '"-/->"' '
+    echo " No connection"
+fi

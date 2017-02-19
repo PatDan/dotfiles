@@ -1,0 +1,64 @@
+#!/bin/sh
+
+INSTANCE="${1:-BAT0}"
+ALERT_LOW="${2:-10}"
+
+if test -e "/sys/class/power_supply/$INSTANCE"
+then
+    status=$(cat /sys/class/power_supply/$INSTANCE/status)
+    capacity=$(cat /sys/class/power_supply/$INSTANCE/capacity)
+	if [ $capacity -gt 89 ]
+	then
+		baticon=''
+	else
+		if [ $capacity -gt 62 ]
+		then
+		baticon=''
+		else
+			if [ $capacity -gt 35 ]
+			then
+				baticon=''
+			else
+				if [ $capacity -gt 10 ]
+				then
+					baticon=''
+				else
+					baticon=''
+				fi
+			fi
+		fi
+	fi
+    case "$status" in
+        "Discharging")
+            symbol=''
+			remaining="$(upower -i /org/freedesktop/UPower/devices/battery_BAT0 | grep -E "time" | cut -d ' ' -f 14-15)"
+			#remaining="$(acpi)"
+            ;;
+        "Charging")
+            symbol=''
+			remaining="$(upower -i /org/freedesktop/UPower/devices/battery_BAT0 | grep -E "time" | cut -d ' ' -f 15-16)"
+			#remaining="$(acpi)"
+			baticon=' '$baticon
+			#baticon=' '$baticon
+            ;;
+        "Full")
+            exit
+            ;;
+    esac
+
+    # Full text
+	#echo "$baticon $capacity%"
+	echo "$baticon $capacity% $remaining"
+    # Short text
+    #echo "Ψ $capacity% $symbol"
+
+    # Color
+    #if test $capacity -le $ALERT_LOW -a $status = "Discharging"
+    #then
+        #echo "#F5A3A3"
+    #fi
+	#if [ $status = "Charging" ]
+	#then
+		#echo "#70CBB6"
+	#fi
+fi

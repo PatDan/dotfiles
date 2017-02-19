@@ -1,0 +1,6 @@
+#!/bin/sh
+case $BLOCK_BUTTON in
+	1) i3-nagbar -t warning -m 'You pressed the shutdown shortcut. Do you really want to shutdown?' -b 'Yes, shutdown' 'shutdown -h now' >/dev/null;;
+esac
+echo ''
+trap ':' PIPE

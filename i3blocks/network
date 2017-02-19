@@ -19,10 +19,7 @@ done
 
 if [ -n "$text" ]; then
     text=$(echo $text | sed "s/^| //")
-    echo ' '$text' '
-    echo ' '$text' '
+    echo $text
 else
     echo ' '"-/->"' '
-    echo ' '"none"' '
-    echo "#F5A3A3"
 fi

@@ -1,0 +1,62 @@
+[options]
+font =  Droid Sans Mono Dotted for Powerline 11
+
+[colors]
+# Base16 Ashes
+# Scheme: Jannik Siebert (https://github.com/janniks)
+
+background = rgba(39, 44, 51, 0.97)
+foreground      = #DDDDDD
+foreground_bold = #DDDDDD
+#cursor          = #DDDDDD
+
+# 16 color space
+
+
+
+# black
+color0  = #282a2e
+color8  = #373b41
+
+# red
+color1  = #da866d
+color9  = #da866d
+
+# green
+color2  = #7b9b86
+color10 = #7b9b86
+
+# yellow
+color3  = #e9cb9e
+color11 = #e9cb9e
+
+# blue
+color4  = #7b98b3
+color12 = #7b98b3
+#color12 = #75a2c1
+
+# magenta
+#color5  = #aa9ca9
+color5  = #b4a3ac
+#color5  = #ffa193
+color13  = #b4a3ac
+
+# cyan
+color6  = #9db9cb
+color14 = #9db9cb
+
+# white
+#color7  = #707880
+color7  = #ffffff
+#color15 = #c5c8c6
+color15 = #ffffff
+ 
+# 256 color space
+color16 = #C7C795
+color17 = #C7C795
+color18 = #393F45
+color19 = #565E65
+color20 = #ADB3BA
+color21 = #DFE2E5
+color22 = #252C34
+

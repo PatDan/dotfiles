@@ -17,10 +17,14 @@ brightness=$(python -c "print(round(float('$red')*0.3+float('$green')*0.59+float
 if [ $brightness -gt 100 ]
 then
 	ICON=$HOME/.xlock/iconblack.png
+	color=11111188
 else
 	ICON=$HOME/.xlock/iconwhite.png
+	color=EEEEEE44
+	vercolor=FFFFFF99
 fi
 
 convert $TMPBG $ICON -gravity center -composite -matte $TMPBG
-i3lock -u -i $TMPBG 
+#i3lock --insidevercolor=ff000000 --insidewrongcolor=ff000000 --insidecolor=ff000000 --ringvercolor=ff000000 --ringwrongcolor=ff000000 --ringcolor=$color --linecolor=$color --textcolor=ff000000 --keyhlcolor=$vercolor --bshlcolor=ffff00ff -i $TMPBG 
+i3lock -u -i $TMPBG
 #-matte before composite

@@ -1,0 +1,18 @@
+#!/bin/sh
+
+bn=$(light)
+bn=${bn%%.*}
+if [ $bn -gt 66 ]
+then
+	echo " $bn%"
+elif [ $bn -gt 33 ]
+then
+	echo " $bn%"
+else
+	echo " $bn%"
+	# if [ $bn -eq 0 ]
+	# then
+		# echo "%{+u +o}%{-u -o}%{+u +o}%{-u -o}%{F#777777}━━━━━━━━━━━━━━"
+	# else
+	# fi
+fi

@@ -1,0 +1,27 @@
+#!/bin/sh
+full=$(xdotool getactivewindow getwindowname)
+IFS='-' read -r -a array <<< "$full"
+
+firstpart=(${array[0]})
+i=0
+output=""
+if [[ $full == *"-"* ]]
+then
+	for element in "${firstpart[@]}"
+	do
+
+		if [ $i -lt 3 ]
+		then
+			output="$output $element "
+		fi
+		i=$((i+1))
+	done
+fi
+size=${#output}
+if [ $size -gt 0 ]
+then
+	output="$output-${array[1]}"
+else
+	output="${array[0]}"
+fi
+echo $full

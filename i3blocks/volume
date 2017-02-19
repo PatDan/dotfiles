@@ -2,10 +2,10 @@
 
 CARD="${1:-0}"
 MIXER="${2:-default}"
-
-symbol=$(amixer -c $CARD -M -D $MIXER get Master | grep Playback | grep -q off && echo ' '' ' || echo ' ''  ')
+trap "echo Booh!" SIGHUP
+symbol=$(amixer -c $CARD -M -D $MIXER get Master | grep Playback | grep -q off && echo '' || echo ' ''  ')
 
 amixer -c $CARD -M -D $MIXER get Master |
-echo ' '$(sed -n "s/^[^:]*: Playback [0-9]* \[\([0-9]*%\)\] .*/$symbol \1/p" | head -n1)' '
-echo ""
-echo $(amixer -c $CARD -M -D $MIXER get Master | grep Playback | grep -q off && echo "#F5A3A3" || echo "#EEEEEE")
+echo $(sed -n "s/^[^:]*: Playback [0-9]* \[\([0-9]*%\)\] .*/$symbol \1/p" | head -n1)
+#echo ""
+#echo $(amixer -c $CARD -M -D $MIXER get Master | grep Playback | grep -q off && echo "#F5A3A3" || echo "#EEEEEE")
