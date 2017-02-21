@@ -20,6 +20,9 @@ else
   alias ls='ls -F'
 fi
 
+
+alias w3mpan='tmux new-session -s browse w3m'
+
 # Editor
 export EDITOR=vim
 export BROWSER=chromium

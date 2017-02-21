@@ -2,9 +2,10 @@
 TMPBG=/tmp/screen.png
 AVGPX=/tmp/average.txt
 
-scrot /tmp/screen.png
+scrot $TMPBG
 
-convert $TMPBG -scale 10% -scale 1000% $TMPBG
+# convert $TMPBG -scale 10% -scale 1000% $TMPBG
+ffmpeg -loglevel quiet -y -i $TMPBG -vf "gblur=sigma=8" $TMPBG
 
 convert  $TMPBG -resize 1x1  $AVGPX
 lineout=$(awk '/#/{i++}i==2' $AVGPX)
