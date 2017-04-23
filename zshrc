@@ -4,10 +4,10 @@ compinit
 zstyle ':completion:*' menu select
 setopt completeinword
 zstyle ':completion:*' matcher-list 'm:{a-zA-Z}={A-Za-z}'
-#zstyle ':completion:*' matcher-list '' \
-#  'm:{a-z\-}={A-Z\_}' \
-#  'r:[^[:alpha:]]||[[:alpha:]]=** r:|=* m:{a-z\-}={A-Z\_}' \
-#  'r:|?=** m:{a-z\-}={A-Z\_}'
+zstyle ':completion:*' matcher-list '' \
+  'm:{a-z\-}={A-Z\_}' \
+  'r:[^[:alpha:]]||[[:alpha:]]=** r:|=* m:{a-z\-}={A-Z\_}' \
+  'r:|?=** m:{a-z\-}={A-Z\_}'
 
 # Colors and prompt
 autoload -Uz colors && colors

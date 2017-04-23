@@ -1,11 +1,12 @@
 [options]
-font =  Droid Sans Mono Dotted for Powerline 11
+font =  Hack 12
 
 [colors]
 # Base16 Ashes
 # Scheme: Jannik Siebert (https://github.com/janniks)
 
-background = rgba(46, 52, 60, 1)
+background = rgba(39, 44, 51, 1)
+# background = rgba(46, 52, 60, 1)
 foreground      = #DDDDDD
 foreground_bold = #DDDDDD
 #cursor          = #DDDDDD

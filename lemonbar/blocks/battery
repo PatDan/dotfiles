@@ -48,7 +48,7 @@ then
 
     # Full text
 	#echo "$baticon $capacity%"
-	echo "$baticon $capacity% $remaining"
+	echo "%{T2}$baticon%{T-} $capacity% $remaining"
     # Short text
     #echo "Ψ $capacity% $symbol"
 

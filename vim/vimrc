@@ -3,8 +3,6 @@ filetype off                  " required
 filetype plugin indent on
 syntax on
 
-
-
 " Powerline
 set rtp+=/usr/lib/python3.5/site-packages/powerline/bindings/vim/
 
@@ -32,7 +30,7 @@ function! ToggleHiddenAll()
     endif
 endfunction
 
-nnoremap <S-h> :call ToggleHiddenAll()<CR>
+nnoremap <Leader>h :call ToggleHiddenAll()<CR>
 
 " Use 256 colours
 set t_Co=256
@@ -114,7 +112,6 @@ set secure
 let &path.="src/include,/usr/include/AL,"
 nnoremap <Leader>e :silent !clear<cr> <bar> :!./%<<cr>
 nnoremap <Leader>c :make!<cr>
-nnoremap <Leader>C :!./%<<cr>
 
 " C++ settings
 nnoremap <Leader>g :make!<cr>
@@ -197,3 +194,11 @@ au BufNewFile,BufRead *.c set tabstop=8
 au BufNewFile,BufRead *.c set softtabstop=8
 au BufNewFile,BufRead *.c set shiftwidth=8
 au BufNewFile,BufRead *.c set noexpandtab
+au BufNewFile,BufRead *.c nnoremap <Leader>C :!./%<<cr>
+
+
+ "Haskell settings
+au BufNewFile,BufRead *.hs set tabstop=8                   "A tab is 8 spaces
+au BufNewFile,BufRead *.hs set expandtab                   "Always uses spaces instead of tabs
+au BufNewFile,BufRead *.hs nnoremap <Leader>C :! ghci % <cr>
+

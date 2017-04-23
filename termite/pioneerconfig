@@ -1,12 +1,14 @@
 [options]
 font =  Hack 12
 
+
+
 [colors]
 # Base16 Ashes
 # Scheme: Jannik Siebert (https://github.com/janniks)
 
 background = rgba(39, 44, 51, 1)
-foreground      = #E6E6E6
+foreground      = #DDDDDD
 foreground_bold = #DDDDDD
 #cursor          = #DDDDDD
 
@@ -18,30 +20,33 @@ foreground_bold = #DDDDDD
 color0  = #282a2e
 color8  = #373b41
 
-
-
-color1  = #E78686
-color9  = #E78686
+# red
+color1  = #c6927c
+color9  = #c6927c
 
 # green
-color2  = #f4c6bb
-color10 = #f4c6bb
+# color2  = #c4bfbe
+color2  = #f1cf9f
+color10  = #f1cf9f
 
 # yellow
-color3  = #FFE5B9
-color11 = #FFE5B9
+color3  = #dab99f
+color11 = #dab99f
 
 # blue
-color4  = #B1C9DD
-color12 = #B1C9DD
+color4  = #9a97a8
+color12 = #9a97a8
+#color12 = #75a2c1
 
 # magenta
-color6  = #9E9E9E
-color14 = #9E9E9E
+#color5  = #aa9ca9
+color5  = #ded1d2
+#color5  = #ffa193
+color13  = #ded1d2
 
 # cyan
-color5  = #d8a1af
-color13 = #d8a1af
+color6  = #b7cfe1
+color14 = #b7cfe1
 
 # white
 #color7  = #707880

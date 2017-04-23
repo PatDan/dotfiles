@@ -21,11 +21,11 @@ set $left h
 set $right l
 
 # class                 border  backgr. text    indicator
-client.focused          #2E343c #2E343c #ffffff #2E343c
-client.focused_inactive #2E343c #2E343c #cccccc #2E343c
-client.unfocused        #2E343c #2E343c #cccccc #2E343c
-#client.unfocused        #272C33F0 #272C33F0 #cccccc #272C33F0
-client.urgent           #2E343c #2E343c #ffffff #2E343c
+client.focused          #2C313B #272C33 #ffffff #272C33
+client.focused_inactive #2C313B #272C33 #bbbbbb #272C33
+client.unfocused        #2C313B #272C33 #bbbbbb #272C33
+#client.unfocused        #272C33F0 #67727E #bbbbbb #272C33
+client.urgent           #2C313B #272C33 #ffffff #272C33
 # use Mouse+Mod1 to drag floating windows to their wanted position
 floating_modifier Mod4
 for_window [class="feh"] floating enable
@@ -231,8 +231,8 @@ exec --no-startup-id nitrogen --restore
 exec --no-startup-id compton --backend glx --paint-on-overlay --glx-no-stencil --vsync opengl-swc --shadow-exclude "! name~=''" --config ~/.compton.conf -b
 
 # Touchpad settings
-exec --no-startup-id xinput set-prop 11 277 1
-exec --no-startup-id xinput set-prop 11 287 1
+#exec --no-startup-id xinput set-prop 11 277 1
+#exec --no-startup-id xinput set-prop 11 287 1
 #exec --no-startup-id xinput set-prop 11 286 1
 #exec --no-startup-id xinput set-prop 11 278 1
 
@@ -257,4 +257,5 @@ bindsym XF86AudioPrev exec --no-startup-id playerctl previous
 exec --no-startup-id /etc/profile.d/vte.sh
 exec --no-startup-id $HOME/.i3/custom_dmenu_run.sh
 exec --no-startup-id /home/patrik/Scripts/Startup/startup.py
+exec --no-startup-id /home/patrik/Scripts/Startup/xinput
 
