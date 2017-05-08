@@ -16,15 +16,26 @@ blue=$((16#${rgb:4:2}))
 brightness=$(python -c "print(round(float('$red')*0.3+float('$green')*0.59+float('$blue')*0.11))")
 if [ $brightness -gt 100 ]
 then
-	ICON=$HOME/.xlock/iconblack.png
-	color=11111188
+	ICON=$HOME/.xlock/keyblack.png
+	ringcol=000000B2
+	vercolor=FFFFFFB2
 else
-	ICON=$HOME/.xlock/iconwhite.png
-	color=EEEEEE44
-	vercolor=FFFFFF99
+	ICON=$HOME/.xlock/keywhite.png
+	ringcol=FFFFFFB2
+	vercolor=000000B2
 fi
 
+wrongcolor=888888B2
+rightcolor=888888B2
+hide=00000000
+backslash=FFFF88B2
+
 convert $TMPBG $ICON -gravity center -composite -matte $TMPBG
-#i3lock --insidevercolor=ff000000 --insidewrongcolor=ff000000 --insidecolor=ff000000 --ringvercolor=ff000000 --ringwrongcolor=ff000000 --ringcolor=$color --linecolor=$color --textcolor=ff000000 --keyhlcolor=$vercolor --bshlcolor=ffff00ff -i $TMPBG 
-i3lock -u -i $TMPBG
-#-matte before composite
+
+
+i3lock --insidevercolor=$hide --insidewrongcolor=$hide --insidecolor=$hide \
+		--ringvercolor=$rightcolor --ringwrongcolor=$wrongcolor --ringcolor=$ringcol \
+		--linecolor=$hide --textcolor=$hide --keyhlcolor=$vercolor \
+		--bshlcolor=$backslash -i $TMPBG 
+
+#i3lock -u -i $TMPBG

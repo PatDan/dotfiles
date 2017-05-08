@@ -3,6 +3,8 @@ filetype off                  " required
 filetype plugin indent on
 syntax on
 
+
+
 " Powerline
 set rtp+=/usr/lib/python3.5/site-packages/powerline/bindings/vim/
 
@@ -111,7 +113,7 @@ set exrc
 set secure
 let &path.="src/include,/usr/include/AL,"
 nnoremap <Leader>e :silent !clear<cr> <bar> :!./%<<cr>
-nnoremap <Leader>c :make!<cr>
+nnoremap <Leader>m :make!<cr>
 
 " C++ settings
 nnoremap <Leader>g :make!<cr>
@@ -129,7 +131,7 @@ set background=dark
 highlight ColorColumn ctermbg=236
 highlight linenr ctermfg=244
 highlight CursorLineNr ctermfg=244
-highlight NonText ctermfg=234
+highlight NonText ctermfg=16
 highlight PreProc ctermfg=3
 highlight Special ctermfg=4
 highlight Type ctermfg=2
@@ -161,6 +163,9 @@ set foldmethod=marker
 set tabstop=4
 set softtabstop=4
 set shiftwidth=4
+
+"Buffers
+nnoremap <Leader>b :bnext<CR>
 
 "Dont use escape!
 :imap jk <Esc>
@@ -194,11 +199,12 @@ au BufNewFile,BufRead *.c set tabstop=8
 au BufNewFile,BufRead *.c set softtabstop=8
 au BufNewFile,BufRead *.c set shiftwidth=8
 au BufNewFile,BufRead *.c set noexpandtab
-au BufNewFile,BufRead *.c nnoremap <Leader>C :!./%<<cr>
+au BufNewFile,BufRead *.c nnoremap <Leader>c :!./%<<cr>
+au BufNewFile,BufRead *.c nnoremap <Leader>C :!gcc % -o %<<cr>
 
 
  "Haskell settings
 au BufNewFile,BufRead *.hs set tabstop=8                   "A tab is 8 spaces
 au BufNewFile,BufRead *.hs set expandtab                   "Always uses spaces instead of tabs
-au BufNewFile,BufRead *.hs nnoremap <Leader>C :! ghci % <cr>
+au BufNewFile,BufRead *.hs nnoremap <Leader>c :! ghci % <cr>
 
