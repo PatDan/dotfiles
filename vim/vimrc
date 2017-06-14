@@ -1,20 +1,22 @@
-set nocompatible              " required
-filetype off                  " required
+set nocompatible
+" filetype off
+" filetype plugin on
 filetype plugin indent on
 syntax on
-
-
 
 " Powerline
 set rtp+=/usr/lib/python3.5/site-packages/powerline/bindings/vim/
 
-" Pathogen
+"" Lazy
+" set lazyredraw
+"
+"" Pathogen
 execute pathogen#infect()
-
-" Always show statusline
-" set laststatus=2
+"
+"" Always show statusline
+"" set laststatus=2
 set laststatus=2
-
+"
 let s:hidden_all = 0
 function! ToggleHiddenAll()
     if s:hidden_all  == 0
@@ -77,10 +79,9 @@ endfunction
 
 "Pandoc
 nnoremap <Leader>p :exec PanSave() <CR><CR>
-map <Leader>P :!tmux new -d "tmux send-keys -t browse R" 
 
 " Copy paste
-" set clipboard=unnamed
+" set clipboard=unnamedplus
 vmap <C-c> "+y
 vmap <C-x> "+c
 vmap <C-v> c<ESC>"+p
@@ -97,7 +98,7 @@ nnoremap <leader>D ""D
 vnoremap <leader>d ""d
 
 " Mouse 
-set mouse=a
+" set mouse=a
 
 " Showing line numbers and length
 set number
@@ -166,19 +167,26 @@ set shiftwidth=4
 
 "Buffers
 nnoremap <Leader>b :bnext<CR>
+nnoremap <Leader>v :bdelete<CR>
 
 "Dont use escape!
 :imap jk <Esc>
 
 let g:netrw_banner = 0
-let g:netrw_liststyle = 4
+let g:netrw_liststyle = 0
 let g:netrw_browse_split = 4
-let g:netrw_altv = 1
+let g:netrw_altv=1
 let g:netrw_winsize = 25
 augroup ProjectDrawer
 	autocmd!
 augroup END
-nnoremap <Leader>a :Vexplore<CR>
+
+function! NetToggle()
+	:Vexplore!
+	" let g:netrw_chgwin = 0
+endf
+
+nnoremap <Leader>a :call NetToggle()<CR>
 
 " set cursor shapes by mode
 let &t_SI = "\<Esc>[6 q"
@@ -192,7 +200,7 @@ au BufNewFile,BufRead *.py set shiftwidth=4
 au BufNewFile,BufRead *.py set textwidth=79
 au BufNewFile,BufRead *.py set expandtab
 au BufNewFile,BufRead *.py set autoindent
-au BufNewFile,BufRead *.py set fileformat=unix	
+au BufNewFile,BufRead *.py set fileformat=unix
 
 "C settings
 au BufNewFile,BufRead *.c set tabstop=8
@@ -208,3 +216,34 @@ au BufNewFile,BufRead *.hs set tabstop=8                   "A tab is 8 spaces
 au BufNewFile,BufRead *.hs set expandtab                   "Always uses spaces instead of tabs
 au BufNewFile,BufRead *.hs nnoremap <Leader>c :! ghci % <cr>
 
+"Markdown settings
+au BufNewFile,BufRead *.md set nornu
+au BufNewFile,BufRead *.md set nonumber
+" au BufNewFile,BufRead *.md highlight FoldColumn ctermbg=236
+let g:vimwiki_list = [{'path': '~/.wikivim/', 'syntax': 'markdown', 'ext': '.md'}]
+let g:pandoc#modules#disabled = ["spell"]
+
+nnoremap <Up> <Nop>
+nnoremap <Down> <Nop>
+nnoremap <Left> <Nop>
+nnoremap <Right> <Nop>
+noremap <Del> <Nop>
+
+"Vimwiki mappings
+nmap <Leader>sw <Plug>VimwikiIndex
+nmap <Leader>st <Plug>VimwikiTabIndex
+nmap <Leader>ss <Plug>VimwikiUISelect
+nmap <Leader>si <Plug>VimwikiDiaryIndex
+nmap <Leader>s<Leader>w <Plug>VimwikiMakeDiaryNote
+nmap <Leader>s<Leader>t <Plug>VimwikiTabMakeDiaryNote
+nmap <Leader>s<Leader>y <Plug>VimwikiMakeYesterdayDiaryNote
+nmap <Leader>sh <Plug>Vimwiki2HTML
+nmap <Leader>shh <Plug>Vimwiki2HTMLBrowse
+nmap <Leader>s<Leader>i <Plug>VimwikiDiaryGenerateLinks
+nmap <Leader>sd <Plug>VimwikiDeleteLink
+nmap <Leader>sr <Plug>VimwikiRenameLink
+
+
+
+" let g:airline_powerline_fonts = 0
+" let g:airline_theme='monochrome'
