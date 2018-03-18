@@ -1,0 +1,20 @@
+! Unmap capslock
+clear Lock
+keycode 66 = Mode_switch
+
+! Leave mod4 as windows key _only_
+! remove mod4 = Hyper_L
+
+! Set mod3 to capslock
+
+keycode  25 = w W XF86AudioPlay W lstroke Lstroke lstroke Lstroke w W lstroke Lstroke w W lstroke Lstroke
+keycode  24 = q Q XF86AudioPrev Q at Greek_OMEGA at Greek_OMEGA q Q at Greek_OMEGA q Q at Greek_OMEGA
+keycode  26 = e E XF86AudioNext E EuroSign cent EuroSign cent e E EuroSign cent e E EuroSign cent
+keycode  39 = s S XF86AudioLowerVolume S ssharp section ssharp section s S ssharp section s S ssharp section
+keycode  40 = d D XF86AudioRaiseVolume D eth ETH eth ETH d D eth ETH d D eth ETH
+keycode  41 = f F XF86AudioMute F dstroke ordfeminine dstroke ordfeminine f F dstroke ordfeminine f F dstroke ordfeminine
+keycode  38 = a A Caps_Lock A ordfeminine masculine ordfeminine masculine a A ordfeminine masculine
+keycode  43 = h H Left H hstroke Hstroke hstroke
+keycode  44 = j J Down J dead_hook dead_horn dead_hook
+keycode  45 = k K Up K kra ampersand kra
+keycode  46 = l L Right L lstroke Lstroke lstroke
