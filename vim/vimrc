@@ -72,9 +72,9 @@ map <Leader>q :q!<CR>
 map <Leader>W :w !sudo tee > /dev/null %<CR>
 
 function! PanSave()
-	:w
-	:Pandoc html 
-	:!tmux new -d "tmux send-keys -t browse R"
+    :w
+    :Pandoc html 
+    :!tmux new -d "tmux send-keys -t browse R"
 endfunction
 
 "Pandoc
@@ -164,6 +164,7 @@ set foldmethod=marker
 set tabstop=4
 set softtabstop=4
 set shiftwidth=4
+set expandtab
 
 "Buffers
 nnoremap <Leader>b :bnext<CR>
@@ -178,12 +179,12 @@ let g:netrw_browse_split = 4
 let g:netrw_altv=1
 let g:netrw_winsize = 25
 augroup ProjectDrawer
-	autocmd!
+    autocmd!
 augroup END
 
 function! NetToggle()
-	:Vexplore!
-	" let g:netrw_chgwin = 0
+    :Vexplore!
+    " let g:netrw_chgwin = 0
 endf
 
 nnoremap <Leader>a :call NetToggle()<CR>
@@ -206,10 +207,39 @@ au BufNewFile,BufRead *.py set fileformat=unix
 au BufNewFile,BufRead *.c set tabstop=8
 au BufNewFile,BufRead *.c set softtabstop=8
 au BufNewFile,BufRead *.c set shiftwidth=8
-au BufNewFile,BufRead *.c set noexpandtab
+au BufNewFile,BufRead *.c set expandtab
 au BufNewFile,BufRead *.c nnoremap <Leader>c :!./%<<cr>
 au BufNewFile,BufRead *.c nnoremap <Leader>C :!gcc % -o %<<cr>
 
+"Scala settings
+au BufNewFile,BufRead *.py set tabstop=4
+au BufNewFile,BufRead *.py set softtabstop=4
+au BufNewFile,BufRead *.py set shiftwidth=4
+au BufNewFile,BufRead *.py set textwidth=79
+au BufNewFile,BufRead *.py set expandtab
+au BufNewFile,BufRead *.py set autoindent
+
+"Rust settings
+au BufNewFile,BufRead *.rs set tabstop=4
+au BufNewFile,BufRead *.rs set softtabstop=4
+au BufNewFile,BufRead *.rs set shiftwidth=4
+au BufNewFile,BufRead *.rs set textwidth=79
+au BufNewFile,BufRead *.rs set expandtab
+au BufNewFile,BufRead *.rs set autoindent
+au BufNewFile,BufRead *.rs set hidden
+au BufNewFile,BufRead *.rs let g:racer_cmd = "/home/patrik/.cargo/bin/racer"
+
+"Javascript settings
+au BufNewFile,BufRead *.js set tabstop=2
+au BufNewFile,BufRead *.js set softtabstop=2
+au BufNewFile,BufRead *.js set shiftwidth=2
+au BufNewFile,BufRead *.js set textwidth=79
+au BufNewFile,BufRead *.js set expandtab
+au BufNewFile,BufRead *.js let g:syntastic_always_populate_loc_list = 1
+au BufNewFile,BufRead *.js let g:syntastic_auto_loc_list = 1
+au BufNewFile,BufRead *.js let g:syntastic_check_on_open = 1
+au BufNewFile,BufRead *.js let g:syntastic_check_on_wq = 0
+au BufNewFile,BufRead *.js let g:syntastic_javascript_checkers = ['eslint']
 
  "Haskell settings
 au BufNewFile,BufRead *.hs set tabstop=8                   "A tab is 8 spaces
@@ -247,3 +277,6 @@ nmap <Leader>sr <Plug>VimwikiRenameLink
 
 " let g:airline_powerline_fonts = 0
 " let g:airline_theme='monochrome'
+"
+"
+let g:jedi#usages_command = "<leader>k"

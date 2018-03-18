@@ -3,7 +3,9 @@
 import time
 import i3ipc
 from os import environ
-
+resizeinfo = "resizemode%{F#A7B1BD} binding mode %{F#EEEEEE}%{T4}RESIZE \
+        %{B-}%{F-}%{T-}"
+defaultinfo = "defaultmode"
 def write_fifo(msg):
     fifo = open('/tmp/panel_fifo','w')
     fifo.write("{:s}\n".format(msg))
@@ -11,9 +13,9 @@ def write_fifo(msg):
 
 def on_mode_event(i3, e):
     if(format(e.change) == '$resize'):
-        write_fifo("ResizeMode")
+        write_fifo(resizeinfo)
     elif(format(e.change) == 'default'):
-        write_fifo("DefaultMode")
+        write_fifo("defaultmode")
 
 
 def update_workspaces(i3):
@@ -25,16 +27,16 @@ def update_workspaces(i3):
     i = 0
     for wp in i3.get_workspaces():
         for x in range(0, wp.num-i-1):
-            """out['mainbar'] += ("%{F#66707C}%{F#FFFFFF} ")"""
-            out['mainbar'] += ("%{F#717C89}%{F#FFFFFF} ")
+            out['mainbar'] += ("%{F#717C89}%{F-} ")
         i = wp.num
         if(wp.urgent == 1 ):
-            out['mainbar'] += "%{F" + redcol + "}%{F#FFFFFF} "
+            out['mainbar'] += "%{F" + redcol + "}%{F-} "
             continue
         if(wp.visible == 1 ):
             out['mainbar'] += " "
             continue
         out['mainbar'] += " "
+        #print(" ")
 
     write_fifo(out['mainbar'])
 

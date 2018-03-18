@@ -29,11 +29,11 @@ color11  = #8B8886
 color4  = #729597
 color12  = #5D7A7C
 #brown
-color5  = #908a8a
-color13 = #797474
+color5 = #8A9FA3
+color13 = #8A9FA3
 #ice blue
-color6  = #aac3c8
-color14 = #8A9FA3
+color6 = #797474
+color14 = #797474
 #grey ice blue
 color7  = #FFFFFF
 color15 = #DEDEDE

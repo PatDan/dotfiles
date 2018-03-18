@@ -7,7 +7,7 @@ trap "echo Booh!" SIGHUP
 mute=$(amixer -c $CARD -M -D $MIXER get Master | grep Playback | grep -q off && echo 1 || echo 0)
 if [ $mute -eq 1 ]
 then
-	echo " %{F#67727E}%{T4}%{T-}━━━━━━━━━━━━━━"
+	slider=" %{F#67727E}%{T4}%{T-}━━━━━━━━━━━━━━%{F-}"
 else
 	# echo "━━━━━━━▊%{F#67727E}━━━━━━━"
 	pc=$(amixer -c $CARD -M -D $MIXER get Master |
@@ -15,48 +15,48 @@ else
 	pc=${pc::-1}
 	if [ $pc -eq 100 ]
 	then
-		echo " %{F#FFFFFF}━━━━━━━━━━━━━━%{T4}%{T-}%{F#67727E}"
+		slider=" %{F#FFFFFF}━━━━━━━━━━━━━━%{T4}%{T-}%{F#67727E}%{F-}"
 	elif [ $pc -gt 91 ]
 	then
-		echo " %{F#FFFFFF}━━━━━━━━━━━━━%{T4}%{T-}%{F#67727E}━%{F#67727E}"
+		slider=" %{F#FFFFFF}━━━━━━━━━━━━━%{T4}%{T-}%{F#67727E}━%{F-}"
 	elif [ $pc -gt 83 ]
 	then
-		echo " %{F#FFFFFF}━━━━━━━━━━━━%{T4}%{T-}%{F#67727E}━━%{F#67727E}"
+		slider=" %{F#FFFFFF}━━━━━━━━━━━━%{T4}%{T-}%{F#67727E}━━%{F-}"
 	elif [ $pc -gt 75 ]
 	then
-		echo " %{F#FFFFFF}━━━━━━━━━━━%{T4}%{T-}%{F#67727E}━━━%{F#67727E}"
+		slider=" %{F#FFFFFF}━━━━━━━━━━━%{T4}%{T-}%{F#67727E}━━━%{F-}"
 	elif [ $pc -gt 67 ]
 	then
-		echo " %{F#FFFFFF}━━━━━━━━━━%{T4}%{T-}%{F#67727E}━━━━%{F#67727E}"
+		slider=" %{F#FFFFFF}━━━━━━━━━━%{T4}%{T-}%{F#67727E}━━━━%{F-}"
 	elif [ $pc -gt 59 ]
 	then
-		echo " %{F#FFFFFF}━━━━━━━━━%{T4}%{T-}%{F#67727E}━━━━━%{F#67727E}"
+		slider=" %{F#FFFFFF}━━━━━━━━━%{T4}%{T-}%{F#67727E}━━━━━%{F-}"
 	elif [ $pc -gt 51 ]
 	then
-		echo " %{F#FFFFFF}━━━━━━━━%{T4}%{T-}%{F#67727E}━━━━━━%{F#67727E}"
+		slider=" %{F#FFFFFF}━━━━━━━━%{T4}%{T-}%{F#67727E}━━━━━━%{F-}"
 	elif [ $pc -gt 43 ]
 	then
-		echo " %{F#FFFFFF}━━━━━━━%{T4}%{T-}%{F#67727E}━━━━━━━%{F#67727E}"
+		slider=" %{F#FFFFFF}━━━━━━━%{T4}%{T-}%{F#67727E}━━━━━━━%{F-}"
 	elif [ $pc -gt 35 ]
 	then
-		echo " %{F#FFFFFF}━━━━━━%{T4}%{T-}%{F#67727E}━━━━━━━━%{F#67727E}"
+		slider=" %{F#FFFFFF}━━━━━━%{T4}%{T-}%{F#67727E}━━━━━━━━%{F-}"
 	elif [ $pc -gt 27 ]
 	then
-		echo " %{F#FFFFFF}━━━━━%{T4}%{T-}%{F#67727E}━━━━━━━━━%{F#67727E}"
+		slider=" %{F#FFFFFF}━━━━━%{T4}%{T-}%{F#67727E}━━━━━━━━━%{F-}"
 	elif [ $pc -gt 19 ]
 	then
-		echo " %{F#FFFFFF}━━━━%{T4}%{T-}%{F#67727E}━━━━━━━━━━%{F#67727E}"
+		slider=" %{F#FFFFFF}━━━━%{T4}%{T-}%{F#67727E}━━━━━━━━━━%{F-}"
 	elif [ $pc -gt 11 ]
 	then
-		echo " %{F#FFFFFF}━━━%{T4}%{T-}%{F#67727E}━━━━━━━━━━━"
+		slider=" %{F#FFFFFF}━━━%{T4}%{T-}%{F#67727E}━━━━━━━━━━━%{F-}"
 	elif [ $pc -gt 3 ]
 	then
-		echo " %{F#FFFFFF}━━%{T4}%{T-}%{F#67727E}━━━━━━━━━━━━"
+		slider=" %{F#FFFFFF}━━%{T4}%{T-}%{F#67727E}━━━━━━━━━━━━%{F-}"
 	elif [ $pc -gt 0 ]
 	then
-		echo " %{F#FFFFFF}━%{T4}%{T-}%{F#67727E}━━━━━━━━━━━━━"
+		slider=" %{F#FFFFFF}━%{T4}%{T-}%{F#67727E}━━━━━━━━━━━━━%{F-}"
 	else
-		echo " %{T4}%{T-}%{F#67727E}━━━━━━━━━━━━━━"
+		slider=" %{T4}%{T-}%{F#67727E}━━━━━━━━━━━━━━%{F-}"
 	fi
 fi
 
@@ -65,6 +65,7 @@ fi
 
 
 
+echo "%{+u +o}%{B-}%{U#272C33} $slider %{B-}%{U-}%{-u -o}"
 
 
 

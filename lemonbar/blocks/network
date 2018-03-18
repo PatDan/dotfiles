@@ -26,7 +26,7 @@ done
 
 if [ -n "$text" ]; then
     text=$(echo $text | sed "s/^| //")
-    echo $text
+    echo "%{+o}%{B-}%{U#FFFFFF}$text %{B-}%{U-}%{-o}"
 else
     #echo ' '"-/->"' '
     echo " No connection"

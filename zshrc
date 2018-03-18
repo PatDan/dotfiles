@@ -82,9 +82,12 @@ else
 		prompt_host=%{$fg_no_bold[magenta]%}%n%{$reset_color%}@%{$fg_no_bold[purple]%}%m
 fi
 
-PROMPT="$prompt_host %{$fg_bold[blue]%}%~$GIT %{$fg_no_bold[white]%}%# %{$reset_color%}"
-#PROMPT="$prompt_host %{$fg_bold[blue]%}%~$GIT %{$fg_no_bold[white]%} %{$reset_color%}"
+PROMPT="$prompt_host %{$fg_bold[blue]%}%~$GIT %{$fg_no_bold[magenta]%}➤%{$fg_no_bold[green]%} %{$reset_color%}"
+#PROMPT="$prompt_host %{$fg_bold[blue]%}%~$GIT %{$fg_no_bold[white]%}%# %{$reset_color%}"
 
 zstyle ':completion:*' list-colors "${(@s.:.)LS_COLORS}"
 
 alias grep='grep --color=auto'
+
+# Globbing
+setopt extended_glob

@@ -13,13 +13,11 @@ if [ $# -gt 0 ]; then
 		info="Spotify"$(python ~/.config/lemonbar/blocks/music.py $status)
 		echo $info > /tmp/panel_fifo
 	elif [ "$1" = "next" ]; then
-		playerctl next
-		status=$(playerctl status)
-		info="Spotify"$(python ~/.config/lemonbar/blocks/music.py $status)
+		status=$(playerctl next && playerctl status)
+		info="Spotify"$(python ~/.config/lemonbar/blocks/music.py $status next)
 		echo $info > /tmp/panel_fifo
 	elif [ "$1" = "previous" ]; then
-		playerctl previous
-		status=$(playerctl status)
+		status=$(playerctl previous && playerctl status)
 		info="Spotify"$(python ~/.config/lemonbar/blocks/music.py $status)
 		echo $info > /tmp/panel_fifo
 	fi

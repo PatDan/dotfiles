@@ -28,7 +28,8 @@ fi
 wrongcolor=888888B2
 rightcolor=888888B2
 hide=00000000
-backslash=FFFF88B2
+backslash=888888FF
+# backslash=FFFF88B2
 
 convert $TMPBG $ICON -gravity center -composite -matte $TMPBG
 

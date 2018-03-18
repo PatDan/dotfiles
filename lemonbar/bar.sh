@@ -1,56 +1,48 @@
 #!/usr/bin/bash
 
-
-
 barpid="$$"
 trap 'trap - TERM; kill 0' INT TERM QUIT EXIT
 if [ $(pgrep -cx lemonbar) -gt 0 ] ; then
 	printf "%s\n" "The panel is already running." >&2
 	exit 1
 fi
+
 fifo="/tmp/panel_fifo"
 [ -e "$fifo" ] && rm "$fifo"
 mkfifo "$fifo"
 
-Windowtitle() {
+windowtitle() {
 		echo "Windowtitle "$(~/.config/lemonbar/blocks/windowtitle)
 }
-
-Clock() {
-	echo "Clock $(~/.config/lemonbar/blocks/calendar) $(~/.config/lemonbar/blocks/time)"
+clock() {
+	echo "Clock %{+u +o}%{B-}%{U#272C33}$(~/.config/lemonbar/blocks/calendar) $(~/.config/lemonbar/blocks/time)%{B-}%{U-}%{-u -o}"
 }
-
-Battery() {
+battery() {
 		echo "Battery "$(~/.config/lemonbar/blocks/battery)
-
 		#echo 'Battery  96%' && sleep 1 && echo 'Battery  96%' && sleep 1 && echo 'Battery  96%' && sleep 1 && echo 'Battery  96%' && sleep 1 && echo 'Battery  96%' && sleep 1 &
 }
-Volume() {
+volume() {
 		echo "Volume "$(~/.config/lemonbar/blocks/volume)
 }
-Network() {
+network() {
 		echo "Network "$(~/.config/lemonbar/blocks/network)
 }
-Spotify() {
+spotify() {
 		if [ $(pgrep -cx spotify) -gt 0 ] ; then
 			status=$(playerctl status)
 			echo "Spotify"$(python ~/.config/lemonbar/blocks/music.py $status)
         else
 			echo "Spotify"
         fi
-
 }
 
-while :; do Volume; sleep 30s; done > "$fifo" &
-while :; do Clock; sleep 60s; done > "$fifo" &
-while :; do Battery; sleep 6s; done > "$fifo" &
-while :; do Network; sleep 10s; done > "$fifo" &
-while :; do Spotify; sleep 5s; done > "$fifo" &
+while :; do volume; sleep 30s; done > "$fifo" &
+while :; do clock; sleep 60s; done > "$fifo" &
+while :; do battery; sleep 6s; done > "$fifo" &
+while :; do network; sleep 10s; done > "$fifo" &
+while :; do spotify; sleep 5s; done > "$fifo" &
 
 /home/patrik/.config/lemonbar/events.py &
-
-
-#testinfo="%{B#4D5764}%{T4}%{+u}%{U#DDDDDD}%{O#2E343c}  %{-u}%{T-}%{B-}%{B#2E343c}%{F#717C89}%{+u}%{U#717C89}%{O#2E343c}  %{-u}%{T-}%{B-}%{F-}"
 
 while read -r line ; do
     case $line in
@@ -75,18 +67,17 @@ while read -r line ; do
         Windowtitle*)
             wt="${line:11}"
             ;;
-		ResizeMode*)
-			rs="%{F#A7B1BD} binding mode %{F#EEEEEE}%{T4}RESIZE %{B-}%{F-}%{T-}"
+		resizemode*)
+            rs="${line:10}"
 			;;
-		DefaultMode*)
+		defaultmode*)
 			rs=""
 			;;
 		Spotify*)
             sp="${line:7}"
 			;;
     esac
-	echo "%{l} %{F#FFFFFF}$nt $testinfo $vl%{F#FFFFFF}  $sp  $rs%{c}%{F#FFFFFF}%{T4}$ws%{T-}%{F-}%{B-}%{r}%{F#FFFFFF}$bn $bt %{A:gsimplecal &:}$cl %{A}%{F-}%{B-}"
-done < "$fifo" | lemonbar -f "Hack:size=10" -o -2 -f "FontAwesome:size=10" \
-	-o -2.5 -f "Material Icons:size=12" -o -1 -f "Hack:size=10" -o -2 -f "FontAwesome:size=12" -o 0 -u 2 -U "#FFFFFF" -B "#272C33" -g 1920x20+0+0 | sh
-	#-o -3 -f "Material Design Icons:size=11" -o -2 -f "Hack:size=10" -o -2 -f "Material Icons:size=13" -o -1 -u 2 -U "#FFFFFF" -B "#272C33" -g 1920x20+0+0 | sh
+	echo "%{l}%{#FFFFFF}$nt $testinfo$vl  $sp $rs%{c}%{T4}$ws%{T-}%{B-}%{r}$bn $bt%{A:gsimplecal &:}$cl%{A}%{F-}"
+done < "$fifo" | lemonbar -f "Hack:size=10" -o 0 -f "FontAwesome:size=10" \
+	-o -2.5 -f "Material Icons:size=12" -o -1.5 -f "Hack:size=10" -o 0 -f "FontAwesome:size=12" -o 0 -u 0 -U "#FFFFFF" -B "#272C33" -F "#FFFFFF" -g 1920x20+0+0 | sh
     
